@@ -14,7 +14,7 @@ Este proyecto corresponde a la implementación web del emprendimiento **Arepas m
 ├── styles/
 │   └── main.css            # Estilos centralizados y variables CSS
 ├── index.html              # Página de inicio
-├── tienda.html             # Página de tiendas y puntos de venta
+├── tienda.html             # Página principal de tienda
 ├── catalogo.html           # Catálogo completo
 ├── detalles-producto.html  # Vista detallada de producto individual
 ├── carrito.html            # Carrito de compras con LocalStorage y stock
