@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arepas mi Tierrita - Tu Carrito</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-title">Arepas mi Tierrita</a>
+    <span style="color: var(--text-title-color); font-weight: 500;">¿Estamos bien de cuentas o tienes más antojos?</span>
+    <ul class="nav-links">
+      <li><a href="catalogo.html" class="btn btn-white" style="padding: 8px 16px; font-size: 0.9rem;">Volver al catálogo</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="main-section">
+      <h1 style="color: var(--text-title-color); font-size: 2.5rem;">Tu carrito</h1>
+      
+      <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+        <!-- Lista de productos -->
+        <div style="flex: 2; min-width: 300px; display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px; font-size: 0.9rem; font-weight: bold; color: var(--text-title-color);">
+            <span>Producto</span>
+            <span>Cantidad</span>
+            <span>Total</span>
+          </div>
+          <div id="cart-items-container">
+            <!-- Rellenado por app.js -->
+          </div>
+        </div>
+
+        <!-- Resumen del pedido -->
+        <div style="flex: 1; min-width: 280px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color); display: flex; flex-direction: column; gap: 20px;">
+          <h3 style="color: var(--text-title-color); font-size: 1.4rem;">Resumen del pedido</h3>
+          
+          <div style="display: flex; justify-content: space-between; font-size: 1rem;">
+            <span>Productos</span>
+            <span id="cart-subtotal-count" style="font-weight: bold;">3</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 1rem; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+            <span>Cantidad total</span>
+            <span id="cart-total-units" style="font-weight: bold;">4 unidades</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: bold; color: var(--text-title-color);">
+            <span>Total a pagar</span>
+            <span id="cart-total-amount" style="font-size: 1.5rem;">$43.96</span>
+          </div>
+
+          <button onclick="alert('¡Pedido realizado con éxito!'); localStorage.clear(); location.reload();" class="btn btn-black" style="width: 100%; margin-top: 10px; padding: 15px;">Continuar al pago</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <p style="font-weight: bold; color: var(--text-title-color);">Proyecto de emprendimiento,</p>
+      <p style="font-weight: bold; color: var(--text-title-color);">programación web y móvil.</p>
+    </div>
+    <div class="footer-integrantes">
+      <h4>Integrantes</h4>
+      <ul>
+        <li>Andres Sebastian Ramirez Rangel - Diseño web y Dirección de producto.</li>
+        <li>Angel Esteban Buitrago Lugo - Interactividad y Estrategia de marketing.</li>
+        <li>Johan Sebastián Molano Pérez - Diseño web y Estudio de mercado.</li>
+        <li>Julio Enrique Urrego Zipamoncha - Diseño UI/UX, Infraestructura y Líder técnico.</li>
+        <li>Oscar Mauricio Güiza - Diseño web y Definición de marca.</li>
+        <li>Paula Julieth Segura Tellez - Diseño web, Diseño responsive y Presupuesto.</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>

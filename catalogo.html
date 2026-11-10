@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arepas mi Tierrita - Catálogo</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-title">Arepas mi Tierrita</a>
+    <ul class="nav-links">
+      <li><a href="carrito.html" class="btn btn-black" style="padding: 8px 16px; font-size: 0.9rem;">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="main-section">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <h1 style="color: var(--text-title-color); font-size: 2.5rem;">Arepas y mucho más</h1>
+        <p>Elige tus favoritos y añádelos al carrito. Fácil y rápido.</p>
+      </div>
+
+      <div class="filters-bar">
+        <select class="filter-select"><option>Tipo de producto: Todos los productos</option></select>
+        <select class="filter-select"><option>Relleno: Todos los rellenos</option></select>
+        <select class="filter-select"><option>Acompañamiento: Todos los acompañamientos</option></select>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -20px;">
+        <span id="product-count" style="color: var(--text-body-color);">6 productos</span>
+        <span style="color: var(--text-body-color); font-size: 0.9rem;">Arepas, combos y bebidas</span>
+      </div>
+
+      <div class="products-grid" id="catalog-grid">
+        <!-- Rellenado dinámicamente por app.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <p style="font-weight: bold; color: var(--text-title-color);">Proyecto de emprendimiento,</p>
+      <p style="font-weight: bold; color: var(--text-title-color);">programación web y móvil.</p>
+    </div>
+    <div class="footer-integrantes">
+      <h4>Integrantes</h4>
+      <ul>
+        <li>Andres Sebastian Ramirez Rangel - Diseño web y Dirección de producto.</li>
+        <li>Angel Esteban Buitrago Lugo - Interactividad y Estrategia de marketing.</li>
+        <li>Johan Sebastián Molano Pérez - Diseño web y Estudio de mercado.</li>
+        <li>Julio Enrique Urrego Zipamoncha - Diseño UI/UX, Infraestructura y Líder técnico.</li>
+        <li>Oscar Mauricio Güiza - Diseño web y Definición de marca.</li>
+        <li>Paula Julieth Segura Tellez - Diseño web, Diseño responsive y Presupuesto.</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arepas mi Tierrita - Tienda</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-title">Arepas mi Tierrita</a>
+    <ul class="nav-links">
+      <li><a href="carrito.html" class="btn btn-black" style="padding: 8px 16px; font-size: 0.9rem;">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="main-section">
+      <div class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero.jpg'); min-height: 350px;">
+        <div class="hero-content">
+          <h1 class="hero-title" style="color: white;">Haz tu pedido ahora</h1>
+          <p class="hero-subtitle" style="color: #ffffff; font-weight: 500;">Fácil y rápido</p>
+          <a href="catalogo.html" class="btn btn-white">Ver catálogo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Combo gringo -->
+    <section class="main-section" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color); display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 30px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
+        <h2 style="color: var(--text-title-color); font-size: 1.8rem;">Combo gringo</h2>
+        <p>Arepa rellena con huevos, tocino y queso mozzarella, acompañada con jugo de naranja.</p>
+        <div style="display: flex; gap: 15px; margin-top: 10px;">
+          <a href="detalles-producto.html?id=4" class="btn btn-white">Ver página del producto</a>
+          <button onclick="addToCart(4)" class="btn btn-black">Añadir al carrito</button>
+        </div>
+      </div>
+      <div style="flex: 1; display: flex; justify-content: flex-end;">
+        <img src="images/combo1.jpg" alt="Combo gringo" style="width: 100%; max-width: 400px; height: 220px;">
+      </div>
+    </section>
+
+    <!-- Combo montañero -->
+    <section class="main-section" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color); display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 30px;">
+      <div style="flex: 1; display: flex; justify-content: flex-start;">
+        <img src="images/combo2.jpg" alt="Combo montañero" style="width: 100%; max-width: 400px; height: 220px;">
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
+        <h2 style="color: var(--text-title-color); font-size: 1.8rem;">Combo montañero</h2>
+        <p>Arepa rellena con frijoles, carne molida y chorizo, acompañada de café.</p>
+        <div style="display: flex; gap: 15px; margin-top: 10px;">
+          <a href="detalles-producto.html?id=5" class="btn btn-white">Ver página del producto</a>
+          <button onclick="addToCart(5)" class="btn btn-black">Añadir al carrito</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 style="color: var(--text-title-color); font-size: 2rem;">Arepas y mucho más</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="images/arepa2.jpg" alt="La campesina">
+          <h3>La campesina</h3>
+          <p>Rellena de pollo desmechado y queso mozzarella.</p>
+          <span class="product-price">$10.99</span>
+        </div>
+        <div class="product-card">
+          <img src="images/juice.jpg" alt="Jugo de guayaba">
+          <h3>Jugo de guayaba</h3>
+          <p>En envase 250ml, fresco y natural.</p>
+          <span class="product-price">$10.99</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <p style="font-weight: bold; color: var(--text-title-color);">Proyecto de emprendimiento,</p>
+      <p style="font-weight: bold; color: var(--text-title-color);">programación web y móvil.</p>
+    </div>
+    <div class="footer-integrantes">
+      <h4>Integrantes</h4>
+      <ul>
+        <li>Andres Sebastian Ramirez Rangel - Diseño web y Dirección de producto.</li>
+        <li>Angel Esteban Buitrago Lugo - Interactividad y Estrategia de marketing.</li>
+        <li>Johan Sebastián Molano Pérez - Diseño web y Estudio de mercado.</li>
+        <li>Julio Enrique Urrego Zipamoncha - Diseño UI/UX, Infraestructura y Líder técnico.</li>
+        <li>Oscar Mauricio Güiza - Diseño web y Definición de marca.</li>
+        <li>Paula Julieth Segura Tellez - Diseño web, Diseño responsive y Presupuesto.</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>
