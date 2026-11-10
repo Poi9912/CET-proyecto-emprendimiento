@@ -7,25 +7,24 @@ Este proyecto corresponde a la implementación web del emprendimiento **Arepas m
 ## 📁 Estructura del Directorio
 
 ```text
-├── src/
-│   ├── images/                 # Contiene imágenes y recursos visuales
-│   ├── scripts/
-│   │   ├── app.js              # Lógica JS, simulación de API y LocalStorage
-│   │   └── products.json       # Datos y control de stock disponible
-│   ├── styles/
-│   │   └── main.css            # Estilos centralizados y variables CSS
-│   ├── index.html              # Página de inicio
-│   ├── tienda.html             # Página de tiendas y puntos de venta
-│   ├── catalogo.html           # Catálogo completo
-│   ├── detalles-producto.html  # Vista detallada de producto individual
-│   ├── carrito.html            # Carrito de compras con LocalStorage y stock
-│   └── sobre-nosotros.html     # Información institucional
+├── images/                 # Contiene imágenes y recursos visuales
+├── scripts/
+│   ├── app.js              # Lógica JS, simulación de API y LocalStorage
+│   └── products.json       # Datos y control de stock disponible
+├── styles/
+│   └── main.css            # Estilos centralizados y variables CSS
+├── index.html              # Página de inicio
+├── tienda.html             # Página de tiendas y puntos de venta
+├── catalogo.html           # Catálogo completo
+├── detalles-producto.html  # Vista detallada de producto individual
+├── carrito.html            # Carrito de compras con LocalStorage y stock
+├── sobre-nosotros.html     # Información institucional
 └── README.md
 ```
 
 ## 🎨 Guía de Estilos y Clases CSS
 
-Todas las reglas de diseño, variables de color y espaciados se encuentran centralizadas en src/styles/main.css.
+Todas las reglas de diseño, variables de color y espaciados se encuentran centralizadas en styles/main.css.
 
 Paleta de Colores (Variables CSS):
 
