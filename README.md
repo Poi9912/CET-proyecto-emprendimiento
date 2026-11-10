@@ -59,3 +59,7 @@ Clases CSS, Espaciados y Zonas de Aplicación:
 1. Simulación de API: Los datos de los productos y su stock disponible se cargan asíncronamente mediante fetch desde src/scripts/products.json.
 2. Control de Stock y Carrito: Al añadir productos al carrito mediante la función addToCart(), el sistema valida en tiempo real las unidades disponibles en el stock del producto (products.json) y almacena los datos utilizando LocalStorage.
 3. Gestión Dinámica: El carrito calcula automáticamente subtotales, permite modificar cantidades respetando límites de stock y eliminar elementos con persistencia local.
+
+## 💻 ¿Cómo subir tu código?
+
+La rama `main` se encuentra protegida, deberás de hacer una rama desde la cual vas a trabajar y crear un pull request con los ajustes por hacer, serán aprobados por el líder técnico del proyecto, se recomienda nombrarla bajo el formato `feat/funcion-agregada`, por ejemplo, para agregar nuevos productos a la simulación de la base de datos la rama se puede llamar `feat/nuevo-producto`.
