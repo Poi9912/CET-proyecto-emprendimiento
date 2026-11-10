@@ -52,8 +52,9 @@ main {
 footer {
   margin-bottom: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
+  flex-direction: row;
   gap: 40px;
   border-top: 1px solid rgba(0,0,0,0.1);
   padding-top: 40px;
@@ -233,11 +234,24 @@ img {
   flex: 1;
 }
 
+/* Footer proyecto */
+.footer-proyecto {
+  max-width: 500px;
+  margin: auto 0 auto auto;
+}
+
+.footer-proyecto p {
+  font-weight: bold;
+  color: var(--text-title-color);
+
+}
+
 /* Footer Integrantes */
 .footer-integrantes {
   font-size: 0.85rem;
   line-height: 1.5;
   color: var(--text-body-color);
+  margin: auto auto auto 0;
 }
 
 .footer-integrantes h4 {
@@ -246,7 +260,6 @@ img {
 }
 
 .footer-integrantes ul {
-  /*list-style: none;*/
   padding: 0;
   margin-left: 1.6rem;
 }
