@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "La quesuda",
+    "category": "Arepas",
+    "filling": "Arepa rellena con doble queso mozzarella.",
+    "description": "Arepa rellena con doble queso mozzarella.",
+    "price": 10.99,
+    "stock": 15,
+    "image": "images/arepa1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "La campesina",
+    "category": "Arepas",
+    "filling": "Rellena de pollo desmechado y queso mozzarella.",
+    "description": "Rellena de pollo desmechado y queso mozzarella.",
+    "price": 10.99,
+    "stock": 8,
+    "image": "images/arepa2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "La ñera",
+    "category": "Arepas",
+    "filling": "Rellena de carne desmechada y guiso.",
+    "description": "Rellena de carne desmechada y guiso.",
+    "price": 10.99,
+    "stock": 12,
+    "image": "images/arepa3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Combo gringo",
+    "category": "Combos",
+    "filling": "Arepa rellena con huevos, tocino y queso mozzarella.",
+    "description": "Arepa rellena con huevos, tocino y queso mozzarella, acompañada con jugo de naranja.",
+    "price": 10.99,
+    "stock": 10,
+    "image": "images/combo1.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Combo montañero",
+    "category": "Combos",
+    "filling": "Arepa rellena con frijoles, carne molida y chorizo.",
+    "description": "Arepa rellena con frijoles, carne molida y chorizo, acompañada de café.",
+    "price": 10.99,
+    "stock": 5,
+    "image": "images/combo2.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Jugo de guayaba",
+    "category": "Bebidas",
+    "filling": "Guayaba fresca",
+    "description": "En envase 250ml, fresco y natural.",
+    "price": 10.99,
+    "stock": 20,
+    "image": "images/juice.jpg"
+  }
+]
