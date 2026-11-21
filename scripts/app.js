@@ -96,7 +96,7 @@ function renderCatalog(products) {
   container.innerHTML = products.map(p => `
     <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
-      <p style="font-size: 0.8rem; color: #828282;">${p.category}</p>
+      <p class="product-category">${p.category}</p>
       <h3>${p.name}</h3>
       <p>${p.description}</p>
       <span class="product-price">${formatCOP(p.price)}</span>
@@ -115,27 +115,27 @@ function renderDetails(products) {
 
   const container = document.getElementById('product-details');
   container.innerHTML = `
-    <div style="display: flex; gap: 40px; align-items: flex-start; width: 100%; flex-wrap: wrap;">
-      <img src="${product.image}" alt="${product.name}" style="width: 450px; height: 400px;">
-      <div style="display: flex; flex-direction: column; gap: 20px; flex: 1; min-width: 280px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color);">
-        <h1 style="color: var(--text-title-color); font-size: 2.5rem;">${product.name}</h1>
-        <span style="font-size: 1.8rem; font-weight: bold; color: var(--text-title-color);">$${product.price.toFixed(2)}</span>
-        <p style="font-size: 1.1rem;">${product.description}</p>
-        <button onclick="addToCart(${product.id})" class="btn btn-black" style="width: 100%;">Añadir al carrito</button>
+    <div class="product-detail-view">
+      <img src="${product.image}" alt="${product.name}" class="product-detail-img">
+      <div class="product-detail-info">
+        <h1>${product.name}</h1>
+        <span class="product-detail-price">$${product.price.toFixed(2)}</span>
+        <p class="product-detail-desc">${product.description}</p>
+        <button onclick="addToCart(${product.id})" class="btn btn-black btn-full">Añadir al carrito</button>
       </div>
     </div>
     
-    <div class="main-section" style="margin-top: 40px;">
-      <h2 style="color: var(--text-title-color); font-size: 1.8rem;">Related products</h2>
-      <div class="products-grid">
+    <div class="main-section">
+      <h2>Productos relacionados</h2>
+      <div class="products-grid related-grid">
         ${products.slice(0, 6).map(p => `
-          <div class="product-card" style="width: calc(33.333% - 20px);">
-            <img src="${p.image}" alt="${p.name}" style="height: 150px;">
-            <h3>Product</h3>
+          <div class="product-card">
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
             <p>${p.description}</p>
             <span class="product-price">${formatCOP(p.price)}</span>
             <div class="product-actions">
-              <a href="detalles-producto.html?id=${p.id}" class="btn btn-white" style="width:100%;">Ver producto</a>
+              <a href="detalles-producto.html?id=${p.id}" class="btn btn-white btn-full">Ver producto</a>
             </div>
           </div>
         `).join('')}
@@ -165,25 +165,25 @@ function renderCart(products) {
     total += itemTotal;
     totalUnits += item.quantity;
     return `
-      <div style="display: flex; align-items: center; justify-content: space-between; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px var(--shadow-color); flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
-        <img src="${item.image}" alt="${item.name}" style="width: 90px; height: 90px;">
-        <div style="flex: 2; min-width: 200px;">
-          <span style="font-size: 0.8rem; color: #828282;">${item.category}</span>
-          <h3 style="color: var(--text-title-color);">${item.name}</h3>
-          <p style="font-size: 0.9rem;">${item.description}</p>
-          <p style="font-size: 0.85rem; color: #000; font-weight: bold; margin-top: 5px;">$${item.price.toFixed(2)} / unidad</p>
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item-info">
+          <span class="product-category">${item.category}</span>
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <p class="cart-item-unit-price">$${item.price.toFixed(2)} / unidad</p>
         </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-          <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #ccc; border-radius: 6px; padding: 5px 10px;">
-            <button onclick="changeQuantity(${item.id}, -1)" style="background: none; border: none; cursor: pointer; font-size: 1rem; font-weight: bold;">-</button>
-            <span style="font-weight: bold;">${item.quantity}</span>
-            <button onclick="changeQuantity(${item.id}, 1)" style="background: none; border: none; cursor: pointer; font-size: 1rem; font-weight: bold;">+</button>
+        <div class="cart-item-controls">
+          <div class="qty-selector">
+            <button onclick="changeQuantity(${item.id}, -1)" class="qty-btn">-</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeQuantity(${item.id}, 1)" class="qty-btn">+</button>
           </div>
-          <span style="font-size: 0.8rem; color: #828282;">${item.quantity} unidades</span>
+          <span class="product-category">${item.quantity} unidades</span>
         </div>
-        <div style="text-align: right; min-width: 100px;">
-          <span style="font-weight: bold; font-size: 1.2rem; color: var(--text-title-color);">$${itemTotal.toFixed(2)}</span>
-          <div><button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #828282; cursor: pointer; font-size: 0.8rem; text-decoration: underline; margin-top: 5px;">Eliminar</button></div>
+        <div class="cart-item-total">
+          <span>$${itemTotal.toFixed(2)}</span>
+          <div><button onclick="removeFromCart(${item.id})" class="btn-remove">Eliminar</button></div>
         </div>
       </div>
     `;
