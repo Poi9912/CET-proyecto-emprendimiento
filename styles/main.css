@@ -1,6 +1,6 @@
 /* VARIABLES PARA COLORES CONSISTENTES*/
 :root {
-  --bg-color: #FFF3DD;
+  --bg-color: #fdd288bd;
   --text-title-color: #000000;
   --text-body-color: #828282;
   --hero-color: #ffffff;
@@ -34,6 +34,7 @@ header, main, footer {
 }
 
 header {
+  position: relative;
   margin-top: 40px;
   margin-bottom: 80px;
   display: flex;
@@ -66,15 +67,63 @@ footer {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+  white-space: nowrap;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-title-color);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 .nav-links {
   display: flex;
-  gap: 30px;
-  list-style: none;
+  flex-direction: row;
   align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li {
+  width: auto;
+  white-space: nowrap;
+}
+.nav-links li,
+.nav-cta {
+  width: auto;
 }
 
+.nav-cta {
+  width: auto;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
 .nav-text {
   color: var(--text-title-color);
   text-decoration: none;
@@ -262,4 +311,45 @@ img {
 .footer-integrantes ul {
   padding: 0;
   margin-left: 1.6rem;
+}
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 40px;
+    width: calc(100% - 80px);
+    max-width: 320px;
+    background-color: var(--bg-color);
+    padding: 1.25rem 1.5rem;
+    gap: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 16px var(--shadow-color);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li,
+  .nav-cta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    max-width: calc(100% - 80px);
+    left: 40px;
+    right: 40px;
+  }
 }
