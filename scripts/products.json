@@ -15,7 +15,7 @@
     "description": "Relleno jugoso de tierno jamón de cordero en el interior con doble queso mozzarella caliente.",
     "price": 6500,
     "stock": 12,
-    "image": "images/arepa2.jpg"
+    "image": "img/jamon.jpg"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "description": "Encierra todo el aroma y sabor intenso del jamón ahumado mezclado con doble queso mozzarella derretido.",
     "price": 6500,
     "stock": 12,
-    "image": "images/arepa3.jpg"
+    "image": "img/jamon.jpg"
   },
   {
     "id": 4,
@@ -105,7 +105,7 @@
     "description": "Arepa doradita por fuera que esconde un corazón derretido de doble queso mozzarella abrazando trozos suaves de bocadillo dulce.",
     "price": 5000,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/guayaba.jpg"
   },
   {
     "id": 13,

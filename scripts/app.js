@@ -74,7 +74,7 @@ function updateCartCount() {
 
 function renderHomeProducts(products) {
   const container = document.getElementById('home-products');
-  const featured = products.slice(0, 3);
+  const featured = products.filter(p => [1, 2, 12].includes(p.id));
   container.innerHTML = featured.map(p => `
     <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
