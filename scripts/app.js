@@ -99,6 +99,7 @@ function renderCatalog(products) {
       <p style="font-size: 0.8rem; color: #828282;">${p.category}</p>
       <h3>${p.name}</h3>
       <p>${p.description}</p>
+      ${mostrarSabores(p)}
       <span class="product-price">${formatCOP(p.price)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
@@ -220,4 +221,19 @@ function removeFromCart(productId) {
   cart = cart.filter(i => i.id !== productId);
   saveCart(cart);
   renderCart(window.appProducts);
+}
+
+function mostrarSabores(p) {
+  if (!Array.isArray(p.sabores) || p.sabores.length === 0) return "";
+  const lista = p.sabores
+    .map((s) => `<li>${s}</li>`)
+    .join("");
+
+  return `
+    <div style="margin: 6px 0; font-size: 0.85rem;">
+      <strong>Sabores:</strong>
+      <ul style="margin: 4px 0 0 18px; padding: 0;">
+        ${lista}
+      </ul>
+    </div>`;
 }

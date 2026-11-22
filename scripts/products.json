@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Mozzarepa ",
+    "name": "Mozzarepa",
     "category": "Arepas Saladas",
     "filling": "Arepa rellena con doble queso mozzarella.",
     "description": "Crujiente por fuera y rebosante por dentro con una generosa carga de doble queso mozzarella súper fundido",
@@ -220,13 +220,76 @@
     "image": "images/juice.jpg"
   },
   {
-    "id": 22,
-    "name": "Combo Montañero: Mozza-Montañera + Jugo de lulo o Coca-Cola",
-    "category": "Bebidas",
+    "id": 23,
+    "name": "Café americano (Tinto) ",
+    "category": "Bebidas calientes",
     "filling": "---",
-    "description": "Una combinación contundente para los que vienen con hambre de verdad.",
-    "price": 15500,
+    "price": 2500,
     "stock": 12,
+    "image": "images/juice.jpg"
+  }, 
+  {
+    "id": 24,
+    "name": "Café con leche",
+    "category": "Bebidas calientes",
+    "filling": "---",
+    "price": 3500,
+    "stock": 12,
+    "image": "images/juice.jpg"
+  }, 
+  {
+    "id": 25,
+    "name": "Chocolate caliente",
+    "category": "Bebidas calientes",
+    "filling": "---",
+    "price": 3500,
+    "stock": 12,
+    "image": "images/juice.jpg"
+  }, 
+  {
+    "id": 26,
+    "name": "Capuchino",
+    "category": "Bebidas calientes",
+    "filling": "---",
+    "price": 4500,
+    "stock": 12,
+    "image": "images/juice.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Milo caliente",
+    "category": "Bebidas calientes",
+    "filling": "---",
+    "price": 4500,
+    "stock": 12,
+    "image": "images/juice.jpg"
+  },
+
+  {
+    "id": 28,
+    "name": "Jugos naturales en agua",
+    "category": "Jugos",
+    "sabores": ["Naranja (solo natural)", "Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana", "Limonada natural"],
+    "description": "Jugos naturales en agua",
+    "price": 4500,
+    "image": "images/juice.jpg"
+  },
+
+  {
+    "id": 29,
+    "name": "Jugos naturales en leche",
+    "category": "Jugos",
+    "sabores": ["Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana", "Limonada natural"],
+    "description": "Jugos naturales con leche",
+    "price": 5500,
+    "image": "images/juice.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Gaseosas y Refrescos",
+    "category": "Otras Bebidas",
+    "sabores": ["Coca-Cola Original", "Coca-Cola Sin Azúcar", "Quatro", "Sprite", "Kola Roman", "Jugo del Valle", "Agua cristal"],
+    "description": "El acompañamiento frío ideal para refrescarte en cualquier momento.",
     "image": "images/juice.jpg"
   }
   
