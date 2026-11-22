@@ -29,11 +29,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+function formatCOP(price){
+  const rounded = Math.round(Number(price) || 0);
+  return `$${rounded.toLocaleString('es-CO')}`;
+}
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [
-    { id: 1, name: "La quesuda", category: "Arepas", description: "Arepa rellena con doble queso mozzarella.", price: 10.99, quantity: 2, stock: 15, image: "images/arepa1.jpg" },
-    { id: 2, name: "La campesina", category: "Arepas", description: "Rellena de pollo desmechado y queso mozzarella.", price: 10.99, quantity: 1, stock: 8, image: "images/arepa2.jpg" },
-    { id: 6, name: "Jugo de guayaba", category: "Bebidas", description: "En envase 250ml, fresco y natural.", price: 10.99, quantity: 1, stock: 20, image: "images/juice.jpg" }
+    { id: 1, name: "La quesuda", category: "Arepas", description: "Arepa rellena con doble queso mozzarella.", price: 10990, quantity: 2, stock: 15, image: "images/arepa1.jpg" },
+    { id: 2, name: "La campesina", category: "Arepas", description: "Rellena de pollo desmechado y queso mozzarella.", price: 12099, quantity: 1, stock: 8, image: "images/arepa2.jpg" },
+    { id: 6, name: "Jugo de guayaba", category: "Bebidas", description: "En envase 250ml, fresco y natural.", price: 10000, quantity: 1, stock: 20, image: "images/juice.jpg" }
   ];
 }
 
@@ -112,7 +116,8 @@ function renderCatalog(products) {
       <p class="product-category">${p.category}</p>
       <h3>${p.name}</h3>
       <p>${p.description}</p>
-      <span class="product-price">$${p.price.toFixed(2)}</span>
+      ${mostrarSabores(p)}
+      <span class="product-price">${formatCOP(p.price)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
         <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
@@ -149,7 +154,7 @@ function renderDetails(products) {
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
             <p>${p.description}</p>
-            <span class="product-price">$${p.price.toFixed(2)}</span>
+            <span class="product-price">${formatCOP(p.price)}</span>
             <div class="product-actions">
               <a href="detalles-producto.html?id=${p.id}" class="btn btn-white btn-full">Ver producto</a>
             </div>
@@ -258,4 +263,18 @@ function checkout() {
   alert('¡Pedido realizado con éxito!');
   saveCart([]);
   renderCart(window.appProducts);
+
+function mostrarSabores(p) {
+  if (!Array.isArray(p.sabores) || p.sabores.length === 0) return "";
+  const lista = p.sabores
+    .map((s) => `<li>${s}</li>`)
+    .join("");
+
+  return `
+    <div style="margin: 6px 0; font-size: 0.85rem;">
+      <strong>Sabores:</strong>
+      <ul style="margin: 4px 0 0 18px; padding: 0;">
+        ${lista}
+      </ul>
+    </div>`;
 }
