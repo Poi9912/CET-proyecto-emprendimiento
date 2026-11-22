@@ -1,6 +1,6 @@
-# Arepas mi Tierrita - Pautas de Diseño y Arquitectura Frontend
+# Mozzarepas - Pautas de Diseño y Arquitectura Frontend
 
-Este proyecto corresponde a la implementación web del emprendimiento **Arepas mi Tierrita**, construido estrictamente con HTML5, CSS3 y JavaScript nativo (Vanilla JS), estructurado modularmente y simulando un backend mediante archivos JSON y almacenamiento local (`LocalStorage`).
+Este proyecto corresponde a la implementación web del emprendimiento **Mozzarepas**, construido estrictamente con HTML5, CSS3 y JavaScript nativo (Vanilla JS), estructurado modularmente y simulando un backend mediante archivos JSON y almacenamiento local (`LocalStorage`).
 
 ---
 
