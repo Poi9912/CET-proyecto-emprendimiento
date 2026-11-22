@@ -10,6 +10,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (document.getElementById('catalog-grid')) renderCatalog(products);
     if (document.getElementById('product-details')) renderDetails(products);
     if (document.getElementById('cart-items-container')) renderCart(products);
+
+    // Evento para el botón de checkout
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', checkout);
+    }
+
+    // Eventos para los botones de combos en tienda.html
+    document.querySelectorAll('.btn-add-combo').forEach(button => {
+      button.addEventListener('click', () => {
+        const id = parseInt(button.id);
+        addToCart(id);
+      });
+    });
   } catch (error) {
     console.error('Error loading products:', error);
   }
@@ -82,10 +96,13 @@ function renderHomeProducts(products) {
       <p>${p.description}</p>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
-        <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
+        <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
       </div>
     </div>
   `).join('');
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderCatalog(products) {
@@ -103,10 +120,13 @@ function renderCatalog(products) {
       <span class="product-price">${formatCOP(p.price)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
-        <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
+        <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
       </div>
     </div>
   `).join('');
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderDetails(products) {
@@ -122,7 +142,7 @@ function renderDetails(products) {
         <h1>${product.name}</h1>
         <span class="product-detail-price">$${product.price.toFixed(2)}</span>
         <p class="product-detail-desc">${product.description}</p>
-        <button onclick="addToCart(${product.id})" class="btn btn-black btn-full">Añadir al carrito</button>
+        <button class="btn btn-black btn-full btn-add-cart" id="${product.id}">Añadir al carrito</button>
       </div>
     </div>
     
@@ -143,6 +163,9 @@ function renderDetails(products) {
       </div>
     </div>
   `;
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderCart(products) {
@@ -154,6 +177,8 @@ function renderCart(products) {
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Tu carrito está vacío.</p>';
+    if (subtotalEl) subtotalEl.textContent = '0';
+    if (totalUnitsEl) totalUnitsEl.textContent = '0 unidades';
     if (totalAmountEl) totalAmountEl.textContent = '$0.00';
     return;
   }
@@ -176,19 +201,25 @@ function renderCart(products) {
         </div>
         <div class="cart-item-controls">
           <div class="qty-selector">
-            <button onclick="changeQuantity(${item.id}, -1)" class="qty-btn">-</button>
+            <button class="qty-btn" id="${item.id}" data-delta="-1">-</button>
             <span>${item.quantity}</span>
-            <button onclick="changeQuantity(${item.id}, 1)" class="qty-btn">+</button>
+            <button class="qty-btn" id="${item.id}" data-delta="1">+</button>
           </div>
           <span class="product-category">${item.quantity} unidades</span>
         </div>
         <div class="cart-item-total">
           <span>$${itemTotal.toFixed(2)}</span>
-          <div><button onclick="removeFromCart(${item.id})" class="btn-remove">Eliminar</button></div>
+          <div><button class="btn-remove" id="${item.id}">Eliminar</button></div>
         </div>
       </div>
     `;
   }).join('');
+  container.querySelectorAll('.qty-btn').forEach(btn => {
+    btn.addEventListener('click', () => changeQuantity(parseInt(btn.id), parseInt(btn.dataset.delta)));
+  });
+  container.querySelectorAll('.btn-remove').forEach(btn => {
+    btn.addEventListener('click', () => removeFromCart(parseInt(btn.id)));
+  });
 
   if (subtotalEl) subtotalEl.textContent = cart.length;
   if (totalUnitsEl) totalUnitsEl.textContent = `${totalUnits} unidades`;
@@ -222,6 +253,16 @@ function removeFromCart(productId) {
   saveCart(cart);
   renderCart(window.appProducts);
 }
+function checkout() {
+  const cart = getCart();
+  if (!cart.length || cart.length === 0) {
+    alert('Tu carrito está vacío.');
+    return;
+  }
+
+  alert('¡Pedido realizado con éxito!');
+  saveCart([]);
+  renderCart(window.appProducts);
 
 function mostrarSabores(p) {
   if (!Array.isArray(p.sabores) || p.sabores.length === 0) return "";
