@@ -656,3 +656,8 @@ img {
 }
 
 /* Media Queries para Responsividad (Pendiente por hacer)*/
+
+.header-tagline{
+  color: var(--text-title-color); 
+  font-weight: 500;
+}
