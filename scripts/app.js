@@ -263,6 +263,7 @@ function checkout() {
   alert('¡Pedido realizado con éxito!');
   saveCart([]);
   renderCart(window.appProducts);
+}
 
 function mostrarSabores(p) {
   if (!Array.isArray(p.sabores) || p.sabores.length === 0) return "";
