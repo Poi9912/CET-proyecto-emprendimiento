@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mozzarepas - Catálogo</title>
   <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/app.js" defer></script>
 </head>
 <body>
 
   <header>
     <a href="index.html" class="brand-title">Mozzarepas</a>
     <ul class="nav-links">
-      <li><a href="carrito.html" class="btn btn-black" style="padding: 8px 16px; font-size: 0.9rem;">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+      <li><a href="carrito.html" class="btn btn-black">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
     </ul>
   </header>
 
   <main>
     <section class="main-section">
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        <h1 style="color: var(--text-title-color); font-size: 2.5rem;">Arepas y mucho más</h1>
+      <div class="catalog-header">
+        <h1 class="page-title">Arepas y mucho más</h1>
         <p>Elige tus favoritos y añádelos al carrito. Fácil y rápido.</p>
       </div>
 
@@ -28,13 +29,13 @@
         <select class="filter-select"><option>Acompañamiento: Todos los acompañamientos</option></select>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -20px;">
-        <span id="product-count" style="color: var(--text-body-color);">6 productos</span>
-        <span style="color: var(--text-body-color); font-size: 0.9rem;">Arepas, combos y bebidas</span>
+      <div class="catalog-meta">
+        <span id="product-count">6 productos</span>
+        <span class="catalog-meta-subtitle">Arepas, combos y bebidas</span>
       </div>
 
       <div class="products-grid" id="catalog-grid">
-        <!-- Rellenado dinámicamente por app.js -->
+          <!-- Rellenado dinámicamente por app.js -->
       </div>
     </section>
   </main>
@@ -56,6 +57,5 @@
     </div>
   </footer>
 
-  <script src="scripts/app.js"></script>
 </body>
 </html>
