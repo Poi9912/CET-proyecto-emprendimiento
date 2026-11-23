@@ -5,13 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arepas mi Tierrita - Catálogo</title>
   <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/menu.js" defer></script>
 </head>
 <body>
 
   <header>
     <a href="index.html" class="brand-title">Arepas mi Tierrita</a>
-    <ul class="nav-links">
-      <li><a href="carrito.html" class="btn btn-black" style="padding: 8px 16px; font-size: 0.9rem;">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="nav-text">Inicio</a></li>
+      <li><a href="tienda.html" class="nav-text">¿Te dió hambre?</a></li>
+      <li><a href="sobre-nosotros.html" class="nav-text">Sobre nosotros</a></li>
+      <li><a href="carrito.html" class="btn btn-black nav-cta">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
     </ul>
   </header>
 
@@ -56,6 +66,5 @@
     </div>
   </footer>
 
-  <script src="scripts/app.js"></script>
 </body>
 </html>
