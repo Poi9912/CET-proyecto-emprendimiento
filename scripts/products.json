@@ -33,73 +33,82 @@
     "description": "Rellena de huevos revueltos esponjosos y doble queso mozzarella derretido, lista para disfrutar caliente a cualquier hora.",
     "price": 6500,
     "stock": 12,
-    "image": "images/combo1.jpg"
+    "image": "img/mañanera.jpg"
   },
   {
     "id": 5,
-    "name": "Mozza-Americana",
+    "name": "Mozza-Gringa",
     "category": "Arepas Saladas",
     "description": "Encierra el sabor irresistible de la tocineta doradita, huevos tiernos y doble queso mozzarella fundido.",
     "price": 7500,
     "stock": 12,
-    "image": "images/combo2.jpg"
+    "image": "img/gringa.jpg"
   },
   {
     "id": 6,
-    "name": "Mozza-fitness",
+    "name": "Mozza-Fitness",
     "category": "Arepas Saladas",
     "description": "Una mezcla suave y fresca en su interior de huevos, aguacate cremoso y doble queso mozzarella fundido.",
     "price": 7500,
     "stock": 10,
-    "image": "images/juice.jpg"
+    "image": "img/fitness.jpg"
+  },
+    {
+    "id": 7,
+    "name": "Mozza-Pollo",
+    "category": "Arepas Saladas",
+    "description": "Rellena de pollo desmechado suave y sazonado, fundido en el centro con doble queso mozzarella.",
+    "price": 7500,
+    "stock": 10,
+    "image": "img/pollo.jpg"
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "Mozza-Criolla",
     "category": "Arepas Saladas",
     "description": "Sabor tradicional encerrado en masa dorada, con carne desmechada muy jugosa bañada en hogao casero.",
     "price": 8500,
     "stock": 10,
-    "image": "images/juice.jpg"
+    "image": "img/criolla.jpg"
   },
   {
-    "id": 8,
+    "id": 9,
     "name": "Mozza-Pizza",
     "category": "Arepas Saladas",
     "description": "Todo el sabor de una pizza sellado por dentro con salami, pepperoni y doble queso mozzarella derretido.",
     "price": 8500,
     "stock": 10,
-    "image": "images/juice.jpg"
+    "image": "img/pizza.jpg"
   },
   {
-    "id": 9,
+    "id": 10,
     "name": "Mozza-Crunch",
     "category": "Arepas Saladas",
     "description": "Guarda el contraste perfecto entre trocitos de chicharrón crujiente y doble queso mozzarella súper elástico.",
     "price": 9500,
     "stock": 10,
-    "image": "images/juice.jpg"
+    "image": "img/crunch.jpg"
   },
   {
-    "id": 10,
+    "id": 11,
     "name": "Mozza-Doble",
     "category": "Arepas Saladas",
     "description": "Rebosante de carne y pollo desmechados bien jugosos, bañados por dentro con doble queso mozzarella derretido.",
     "price": 9500,
     "stock": 10,
-    "image": "images/juice.jpg"
+    "image": "img/doble.jpg"
   },
   {
-    "id": 11,
+    "id": 12,
     "name": "Mozza-Montañera",
     "category": "Arepas Saladas",
     "description": "Un festín completo sellado en su interior con frijoles rojos, carne molida sazonada, chorizo y doble queso mozzarella fundido.",
     "price": 12000,
     "stock": 10,
-    "image": "images/juice.jpg"
+    "image": "img/montañera.jpg"
   },
   {
-    "id": 12,
+    "id": 13,
     "name": "Mozza-Guayaba",
     "category": "Arepas Dulces",
     "description": "Arepa doradita por fuera que esconde un corazón derretido de doble queso mozzarella abrazando trozos suaves de bocadillo dulce.",
@@ -108,162 +117,145 @@
     "image": "img/guayaba.jpg"
   },
   {
-    "id": 13,
+    "id": 14,
     "name": "Mozza-Caramelo",
     "category": "Arepas Dulces",
     "description": "Sellada a la perfección con un relleno cremoso y elástico de doble queso mozzarella y dulce de arequipe.",
     "price": 5500,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/caramelo.jpg"
   },
   {
-    "id": 14,
+    "id": 15,
     "name": "Mozza-Volcán",
     "category": "Arepas Dulces",
     "description": "Un interior tibio y fundido donde el doble queso mozzarella se mezcla con chocolate derretido listo para desbordarse al primer bocado.",
     "price": 6500,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/volcan.jpg"
   },
   {
-    "id": 15,
+    "id": 16,
     "name": "Mozza-Bosque",
     "category": "Arepas Dulces",
     "description": "Rellena de doble queso mozzarella fundido y una jugosa salsa artesanal de frutos rojos que estalla en sabor al morderla.",
     "price": 6500,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/bosque.jpg"
   },
   {
-    "id": 16,
+    "id": 17,
     "name": "Mozza-Tropical",
     "category": "Arepas Dulces",
     "description": "El contraste ideal encerrado en masa dorada, con doble queso mozzarella derretido y un dulce vibrante de frutos amarillos.",
     "price": 6500,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/tropical.jpg"
   },
   {
-    "id": 17,
-    "name": "Combo Clásico: Mozza-Clásica  + Café americano",
+    "id": 18,
+    "name": "Combo Clásico: Mozzarepa  + Café americano",
     "category": "Combos",
     "description": "El dúo tradicional que nunca falla a cualquier hora del día.",
     "price": 6000,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/clasico.jpg"
   },
   {
-    "id": 18,
+    "id": 19,
     "name": "Combo Tradición Dulce: Mozza-Guayaba + Café con leche",
     "category": "Combos",
     "description": "El equilibrio perfecto entre lo dulce, lo salado y una bebida calientita.",
     "price": 8000,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/tradicion.jpg"
   },
   {
-    "id": 19,
-    "name": "Combo Americano: Mozza-Americana + Jugo de naranja natural",
+    "id": 20,
+    "name": "Combo Gringo: Mozza-Americana + Jugo de naranja natural",
     "category": "Combos",
     "description": "Energía pura con el toque cítrico perfecto para empezar la mañana.",
     "price": 11000,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/gringo.jpg"
   },
   {
-    "id": 20,
+    "id": 21,
     "name": "Combo Italiano: Mozza-Pizza + Coca-Cola",
     "category": "Combos",
     "description": "El sabor intenso de la pizza acompañado de una Coca-Cola (Original o Sin azúcar) bien fría.",
     "price": 12000,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/italiano.jpg"
   },
   {
-    "id": 21,
+    "id": 22,
     "name": "Combo Crocante: Mozza-Crunch + Quatro o Limonada natural",
     "category": "Combos",
     "description": "El toque cítrico ideal para acompañar el chicharrón crocante..",
     "price": 13000,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/crocante.jpg"
   },
   {
-    "id": 22,
+    "id": 23,
     "name": "Combo Montañero: Mozza-Montañera + Jugo de lulo o Coca-Cola",
     "category": "Combos",
     "description": "Una combinación contundente para los que vienen con hambre de verdad.",
     "price": 15500,
     "stock": 12,
-    "image": "images/juice.jpg"
+    "image": "img/montañero.jpg"
   },
-  {
+    {
     "id": 23,
-    "name": "Café americano (Tinto) ",
+    "name": "Bebidas Calientes",
     "category": "Bebidas calientes",
-    "price": 2500,
-    "stock": 12,
-    "image": "images/juice.jpg"
-  }, 
-  {
-    "id": 24,
-    "name": "Café con leche",
-    "category": "Bebidas calientes",
-    "price": 3500,
-    "stock": 12,
-    "image": "images/juice.jpg"
-  }, 
-  {
-    "id": 25,
-    "name": "Chocolate caliente",
-    "category": "Bebidas calientes",
-    "price": 3500,
-    "stock": 12,
-    "image": "images/juice.jpg"
-  }, 
-  {
-    "id": 26,
-    "name": "Capuchino",
-    "category": "Bebidas calientes",
-    "price": 4500,
-    "stock": 12,
-    "image": "images/juice.jpg"
-  },
-  {
-    "id": 27,
-    "name": "Milo caliente",
-    "category": "Bebidas calientes",
-    "price": 4500,
-    "stock": 12,
-    "image": "images/juice.jpg"
-  },
-
-  {
-    "id": 28,
-    "name": "Jugos naturales en agua",
-    "category": "Jugos",
-    "sabores": ["Naranja (solo natural)", "Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana", "Limonada natural"],
-    "description": "Jugos naturales en agua",
-    "price": 4500,
-    "image": "images/juice.jpg"
+    "sabores": [
+      { "name": "Café americano (Tinto)", "price": 2500 },
+      { "name": "Café con leche", "price": 3500 },
+      { "name": "Chocolate caliente", "price": 3500 },
+      { "name": "Capuchino", "price": 4500 },
+      { "name": "Milo caliente", "price": 4500 }
+    ],
+    "description": "Bebidas recién preparadas y calientitas para acompañar tu arepa a cualquier hora.",
+    "image": "img/cafeteria.jpg"
   },
 
   {
     "id": 29,
-    "name": "Jugos naturales en leche",
+    "name": "Jugos naturales en agua",
     "category": "Jugos",
-    "sabores": ["Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana", "Limonada natural"],
-    "description": "Jugos naturales con leche",
-    "price": 5500,
-    "image": "images/juice.jpg"
+    "sabores": ["Naranja (solo natural)", "Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana", "Limonada natural (solo natural)"],
+    "description": "Jugos naturales en agua",
+    "price": 4500,
+    "image": "img/en-agua.jpg"
   },
+
   {
     "id": 30,
+    "name": "Jugos naturales en leche",
+    "category": "Jugos",
+    "sabores": ["Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana"],
+    "description": "Jugos naturales con leche",
+    "price": 5500,
+    "image": "img/en-leche.jpg"
+  },
+  {
+    "id": 31,
     "name": "Gaseosas y Refrescos",
     "category": "Otras Bebidas",
-    "sabores": ["Coca-Cola Original", "Coca-Cola Sin Azúcar", "Quatro", "Sprite", "Kola Roman", "Jugo del Valle", "Agua cristal"],
+    "sabores": [
+      {"name": "Coca-Cola Original", "price": 4500},
+      {"name": "Coca-Cola Sin Azúcar", "price": 4500},
+      {"name": "Quatro", "price": 4500},
+      {"name": "Sprite", "price": 4500},
+      {"name": "Kola Roman", "price": 4500},
+      {"name": "Jugo del Valle", "price": 4500},
+      {"name": "Agua brisa sin gas", "price": 2500},
+      {"name": "Agua brisa con gas", "price": 2500}
+    ],
     "description": "El acompañamiento frío ideal para refrescarte en cualquier momento.",
-    "image": "images/juice.jpg"
+    "image": "img/coca-cola.jpg"
   }
   
 ]

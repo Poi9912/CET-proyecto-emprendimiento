@@ -19,12 +19,21 @@ function formatCOP(price){
   const rounded = Math.round(Number(price) || 0);
   return `$${rounded.toLocaleString('es-CO')}`;
 }
+
+function obtenerPrecioBase(p) {
+  if (p.price !== undefined && p.price !== null) {
+    return formatCOP(p.price);
+  }
+  if (Array.isArray(p.sabores) && p.sabores.length > 0 && typeof p.sabores[0] === 'object') {
+    const precios = p.sabores.map(s => Number(s.price) || 0);
+    const minimo = Math.min(...precios);
+    return `Desde ${formatCOP(minimo)}`;
+  }
+  return '$0';
+}
+
 function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [
-    { id: 1, name: "La quesuda", category: "Arepas", description: "Arepa rellena con doble queso mozzarella.", price: 10990, quantity: 2, stock: 15, image: "images/arepa1.jpg" },
-    { id: 2, name: "La campesina", category: "Arepas", description: "Rellena de pollo desmechado y queso mozzarella.", price: 12099, quantity: 1, stock: 8, image: "images/arepa2.jpg" },
-    { id: 6, name: "Jugo de guayaba", category: "Bebidas", description: "En envase 250ml, fresco y natural.", price: 10000, quantity: 1, stock: 20, image: "images/juice.jpg" }
-  ];
+  return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
 function saveCart(cart) {
@@ -37,12 +46,33 @@ function addToCart(productId, quantity = 1) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
+const selectEl = document.getElementById(`sabor-${productId}`);
+  let precioFinal = Number(product.price) || 0;
+  let saborElegido = null;
+
+  if (selectEl) {
+    saborElegido = selectEl.value;
+    if (!saborElegido) {
+      alert('Por favor, selecciona un sabor antes de añadir al carrito.');
+      return;
+    }
+
+  const opcion = selectEl.options[selectEl.selectedIndex];
+  const precioOpcion = opcion.getAttribute('data-precio');
+  if (precioOpcion) {
+    precioFinal = Number(precioOpcion);
+  }
+  }
+  const cartItemId = saborElegido ? `${product.id}-${saborElegido}` : `${product.id}`;
+  const finalName = saborElegido ? `${product.name} (${saborElegido})` : product.name;
+  const maxStock = product.stock || 99;
+
   let cart = getCart();
-  const existingItem = cart.find(item => item.id === productId);
+  const existingItem = cart.find(item => (item.cartItemId || `${item.id}`) === cartItemId);
   
   const currentQtyInCart = existingItem ? existingItem.quantity : 0;
-  if (currentQtyInCart + quantity > product.stock) {
-    alert(`Lo sentimos, solo hay ${product.stock} unidades disponibles.`);
+  if (currentQtyInCart + quantity > maxStock) {
+    alert(`Lo sentimos, solo hay ${maxStock} unidades disponibles.`);
     return;
   }
 
@@ -50,14 +80,15 @@ function addToCart(productId, quantity = 1) {
     existingItem.quantity += quantity;
   } else {
     cart.push({ 
+      cartItemId: cartItemId,
       id: product.id, 
-      name: product.name, 
+      name: finalName, 
       category: product.category,
       description: product.description,
-      price: product.price, 
+      price: precioFinal, 
       image: product.image, 
       quantity: quantity, 
-      stock: product.stock 
+      stock: maxStock 
     });
   }
 
@@ -74,7 +105,7 @@ function updateCartCount() {
 
 function renderHomeProducts(products) {
   const container = document.getElementById('home-products');
-  const featured = products.filter(p => [1, 2, 12].includes(p.id));
+  const featured = products.filter(p => [1, 2, 13].includes(p.id));
   container.innerHTML = featured.map(p => `
     <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
@@ -100,7 +131,7 @@ function renderCatalog(products) {
       <h3>${p.name}</h3>
       <p>${p.description}</p>
       ${mostrarSabores(p)}
-      <span class="product-price">${formatCOP(p.price)}</span>
+      <span class="product-price">${obtenerPrecioBase(p)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
         <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
@@ -120,8 +151,9 @@ function renderDetails(products) {
       <img src="${product.image}" alt="${product.name}" class="product-detail-img">
       <div class="product-detail-info">
         <h1>${product.name}</h1>
-        <span class="product-detail-price">$${product.price.toFixed(2)}</span>
+        <span class="product-detail-price">${obtenerPrecioBase(product)}</span>
         <p class="product-detail-desc">${product.description}</p>
+        ${mostrarSabores(product)}
         <button onclick="addToCart(${product.id})" class="btn btn-black btn-full">Añadir al carrito</button>
       </div>
     </div>
@@ -154,7 +186,9 @@ function renderCart(products) {
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Tu carrito está vacío.</p>';
-    if (totalAmountEl) totalAmountEl.textContent = '$0.00';
+    if (subtotalEl) subtotalEl.textContent = '0';
+    if (totalUnitsEl) totalUnitsEl.textContent = '0 unidades';
+    if (totalAmountEl) totalAmountEl.textContent = '$0';
     return;
   }
 
@@ -162,6 +196,7 @@ function renderCart(products) {
   let totalUnits = 0;
 
   container.innerHTML = cart.map(item => {
+    const itemKey = item.cartItemId || `${item.id}`;
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
     totalUnits += item.quantity;
@@ -172,19 +207,19 @@ function renderCart(products) {
           <span class="product-category">${item.category}</span>
           <h3>${item.name}</h3>
           <p>${item.description}</p>
-          <p class="cart-item-unit-price">$${item.price.toFixed(2)} / unidad</p>
+          <p class="cart-item-unit-price">${formatCOP(item.price)} / unidad</p>
         </div>
         <div class="cart-item-controls">
           <div class="qty-selector">
-            <button onclick="changeQuantity(${item.id}, -1)" class="qty-btn">-</button>
+            <button onclick="changeQuantity('${itemKey}', -1)" class="qty-btn">-</button>
             <span>${item.quantity}</span>
-            <button onclick="changeQuantity(${item.id}, 1)" class="qty-btn">+</button>
+            <button onclick="changeQuantity('${itemKey}', 1)" class="qty-btn">+</button>
           </div>
           <span class="product-category">${item.quantity} unidades</span>
         </div>
         <div class="cart-item-total">
-          <span>$${itemTotal.toFixed(2)}</span>
-          <div><button onclick="removeFromCart(${item.id})" class="btn-remove">Eliminar</button></div>
+          <span>${formatCOP(itemTotal)}</span>
+          <div><button onclick="removeFromCart('${itemKey}')" class="btn-remove">Eliminar</button></div>
         </div>
       </div>
     `;
@@ -192,22 +227,23 @@ function renderCart(products) {
 
   if (subtotalEl) subtotalEl.textContent = cart.length;
   if (totalUnitsEl) totalUnitsEl.textContent = `${totalUnits} unidades`;
-  if (totalAmountEl) totalAmountEl.textContent = `$${total.toFixed(2)}`;
+  if (totalAmountEl) totalAmountEl.textContent = formatCOP(total);
 }
 
-function changeQuantity(productId, delta) {
+function changeQuantity(cartItemId, delta) {
   let cart = getCart();
-  const item = cart.find(i => i.id === productId);
+  const item = cart.find(i => (i.cartItemId || `${i.id}`) === cartItemId);
   if (!item) return;
 
   const newQty = item.quantity + delta;
   if (newQty <= 0) {
-    removeFromCart(productId);
+    removeFromCart(cartItemId);
     return;
   }
 
-  if (newQty > item.stock) {
-    alert(`Solo hay ${item.stock} unidades disponibles.`);
+  const maxStock = item.stock || 99;
+  if (newQty > maxStock) {
+    alert(`Solo hay ${maxStock} unidades disponibles.`);
     return;
   }
 
@@ -216,24 +252,41 @@ function changeQuantity(productId, delta) {
   renderCart(window.appProducts);
 }
 
-function removeFromCart(productId) {
+function removeFromCart(cartItemId) {
   let cart = getCart();
-  cart = cart.filter(i => i.id !== productId);
+  cart = cart.filter(i => (i.cartItemId || `${i.id}`) !== cartItemId);
   saveCart(cart);
   renderCart(window.appProducts);
 }
 
 function mostrarSabores(p) {
   if (!Array.isArray(p.sabores) || p.sabores.length === 0) return "";
-  const lista = p.sabores
-    .map((s) => `<li>${s}</li>`)
-    .join("");
+  
+  const opciones = p.sabores.map((s) => {
+    if (typeof s === 'object') {
+      return `<option value="${s.name}" data-precio="${s.price}">${s.name} - ${formatCOP(s.price)}</option>`;
+    }
+    return `<option value="${s}">${s}</option>`;
+  }).join("");
 
   return `
-    <div style="margin: 6px 0; font-size: 0.85rem;">
-      <strong>Sabores:</strong>
-      <ul style="margin: 4px 0 0 18px; padding: 0;">
-        ${lista}
-      </ul>
-    </div>`;
+    <div class="sabor-selector-container">
+      <label for="sabor-${p.id}" class="sabor-label">Elige tu opción:</label>
+      <select id="sabor-${p.id}" class="sabor-select" onchange="actualizarPrecioOpcion(${p.id}, this)">
+        <option value="" disabled selected>-- Selecciona una opción --</option>
+        ${opciones}
+      </select>
+    </div>
+  `;
+}
+
+function actualizarPrecioOpcion(productId, selectEl) {
+  const opcion = selectEl.options[selectEl.selectedIndex];
+  const nuevoPrecio = opcion.getAttribute('data-precio');
+  
+  if (nuevoPrecio) {
+    const card = selectEl.closest('.product-card, .product-detail-info');
+    const priceEl = card ? card.querySelector('.product-price, .product-detail-price') : null;
+    if (priceEl) priceEl.textContent = formatCOP(nuevoPrecio);
+  }
 }
