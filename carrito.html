@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arepas mi Tierrita - Tu Carrito</title>
+  <title>Mozzarepas - Tu Carrito</title>
   <link rel="stylesheet" href="styles/main.css">
-  <script src="scripts/app.js"></script>
-  <script src="scripts/menu.js"></script>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/menu.js" defer></script>
 </head>
 <body>
 
@@ -23,17 +23,17 @@
       <li><a href="tienda.html" class="nav-text">¿Te dió hambre?</a></li>
       <li><a href="sobre-nosotros.html" class="nav-text">Sobre nosotros</a></li>
       <li><a href="catalogo.html" class="btn btn-white" style="padding: 8px 16px; font-size: 0.9rem;">Volver al catálogo</a></li>
-    </ul>
+    <a href="index.html" class="brand-title">Mozzarepas</a>
   </header>
 
   <main>
     <section class="main-section">
-      <h1 style="color: var(--text-title-color); font-size: 2.5rem;">Tu carrito</h1>
-      
-      <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+      <h1 class="page-title">Tu carrito</h1>
+
+      <div class="cart-layout">
         <!-- Lista de productos -->
-        <div style="flex: 2; min-width: 300px; display: flex; flex-direction: column;">
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px; font-size: 0.9rem; font-weight: bold; color: var(--text-title-color);">
+        <div class="cart-list-container">
+          <div class="cart-list-header">
             <span>Producto</span>
             <span>Cantidad</span>
             <span>Total</span>
@@ -44,24 +44,21 @@
         </div>
 
         <!-- Resumen del pedido -->
-        <div style="flex: 1; min-width: 280px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color); display: flex; flex-direction: column; gap: 20px;">
-          <h3 style="color: var(--text-title-color); font-size: 1.4rem;">Resumen del pedido</h3>
-          
-          <div style="display: flex; justify-content: space-between; font-size: 1rem;">
+        <div class="cart-summary">
+          <h3>Resumen del pedido</h3>
+          <div class="cart-summary-row">
             <span>Productos</span>
-            <span id="cart-subtotal-count" style="font-weight: bold;">3</span>
+            <strong id="cart-subtotal-count">3</strong>
           </div>
-          <div style="display: flex; justify-content: space-between; font-size: 1rem; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+          <div class="cart-summary-row cart-summary-divider">
             <span>Cantidad total</span>
-            <span id="cart-total-units" style="font-weight: bold;">4 unidades</span>
+            <strong id="cart-total-units">4 unidades</strong>
           </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: bold; color: var(--text-title-color);">
+          <div class="cart-summary-total">
             <span>Total a pagar</span>
-            <span id="cart-total-amount" style="font-size: 1.5rem;">$43.96</span>
+            <span id="cart-total-amount" class="cart-total-price">$43.96</span>
           </div>
-
-          <button onclick="alert('¡Pedido realizado con éxito!'); localStorage.clear(); location.reload();" class="btn btn-black" style="width: 100%; margin-top: 10px; padding: 15px;">Continuar al pago</button>
+          <button id="checkout-btn" class="btn btn-black btn-full btn-checkout">Continuar al pago</button>
         </div>
       </div>
     </section>

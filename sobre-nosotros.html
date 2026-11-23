@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arepas mi Tierrita - Sobre nosotros</title>
+  <title>Mozzarepas - Sobre nosotros</title>
   <link rel="stylesheet" href="styles/main.css">
-  <script src="scripts/app.js"></script>
-  <script src="scripts/menu.js"></script>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/menu.js" defer></script>
 </head>
 <body>
 
@@ -22,35 +22,34 @@
       <li><a href="catalogo.html" class="nav-text">Catálogo</a></li>
       <li><a href="tienda.html" class="nav-text">¿Te dió hambre?</a></li>
       <li><a href="carrito.html" class="btn btn-black nav-cta">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+    <a href="index.html" class="brand-title">Mozzarepas</a>
     </ul>
   </header>
 
   <main>
-    <section class="main-section" style="display: flex; flex-direction: row; gap: 40px; align-items: flex-start; justify-content: space-between;">
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 25px; max-width: 600px;">
-        <h1 style="color: var(--text-title-color); font-size: 3rem;">Sobre nosotros</h1>
-        <p style="font-style: italic; color: var(--text-title-color); font-weight: 500;">Sin miedo al queso, sin miedo al éxito</p>
-        
-        <div>
-          <h3 style="color: var(--text-title-color); margin-bottom: 10px;">Misión</h3>
+    <section class="main-section section-row about-section">
+      <div class="about-content">
+        <h1 class="about-title">Sobre nosotros</h1>
+        <p class="about-slogan">Sin miedo al queso, sin miedo al éxito</p>
+        <div class="about-block">
+          <h3>Misión</h3>
           <p>Elaborar y comercializar arepas frescas y de excelente calidad, utilizando ingredientes seleccionados y procesos responsables, para ofrecer productos deliciosos que satisfagan a nuestros clientes y promuevan la tradición gastronómica colombiana.</p>
         </div>
-
-        <div>
-          <h3 style="color: var(--text-title-color); margin-bottom: 10px;">Visión</h3>
+        <div class="about-block">
+          <h3>Visión</h3>
           <p>Ser una empresa reconocida a nivel local y nacional por la calidad, el sabor y la tradición de nuestras arepas, llevando el auténtico sabor colombiano a más hogares y convirtiéndonos en la opción preferida de nuestros clientes.</p>
         </div>
       </div>
-      <div style="flex: 1; display: flex; justify-content: flex-end;">
-        <img src="images/about.jpg" alt="Equipo" style="width: 100%; max-width: 450px; height: 480px;">
+      <div class="about-img-wrapper">
+        <img src="images/about.jpg" alt="Equipo">
       </div>
     </section>
 
-    <section class="main-section" style="align-items: center; text-align: center; margin-top: 40px;">
-      <h2 style="color: var(--text-title-color); font-size: 1.8rem; margin-bottom: 20px;">Nuestro valores nos definen</h2>
-      <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; font-weight: 500; font-size: 1.1rem; color: var(--text-title-color);">
+    <section class="main-section values-section">
+      <h2 class="section-title">Nuestros valores nos definen</h2>
+      <div class="values-list">
         <span>Calidad</span>
-        <span>Respondabilidad</span>
+        <span>Responsabilidad</span>
         <span>Honestidad</span>
         <span>Servicio al cliente</span>
         <span>Trabajo en equipo</span>
@@ -60,7 +59,7 @@
 
   <footer>
     <div class="footer-proyecto">
-      <p style="font-weight: bold; color: var(--text-title-color);">Proyecto de emprendimiento,<br/> programación web y móvil.</p>
+      <p>Proyecto de emprendimiento,<br/> programación web y móvil.</p>
     </div>
     <div class="footer-integrantes">
       <h4>Integrantes</h4>
