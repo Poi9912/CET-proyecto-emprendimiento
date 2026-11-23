@@ -7,9 +7,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateCartCount();
     
     if (document.getElementById('home-products')) renderHomeProducts(products);
+    if (document.getElementById('tienda-products')) renderTiendaProducts(products);
     if (document.getElementById('catalog-grid')) renderCatalog(products);
     if (document.getElementById('product-details')) renderDetails(products);
     if (document.getElementById('cart-items-container')) renderCart(products);
+
+    // Evento para el botón de checkout
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', checkout);
+    }
+
+    // Eventos para los botones de combos en tienda.html
+    document.querySelectorAll('.btn-add-combo').forEach(button => {
+      button.addEventListener('click', () => {
+        const id = parseInt(button.id);
+        addToCart(id);
+      });
+    });
   } catch (error) {
     console.error('Error loading products:', error);
   }
@@ -113,6 +128,28 @@ function renderHomeProducts(products) {
       <p>${p.description}</p>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
+        <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
+      </div>
+    </div>
+  `).join('');
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
+}
+
+function renderTiendaProducts(products) {
+  const container = document.getElementById('tienda-products');
+  const seleccionados = products.filter(p => [10, 28, 31].includes(p.id));
+  container.innerHTML = seleccionados.map(p => `
+    <div class="product-card">
+      <img src="${p.image}" alt="${p.name}">
+      <p class="product-category">${p.category}</p>
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      ${mostrarSabores(p)}
+      <span class="product-price">${obtenerPrecioBase(p)}</span>
+      <div class="product-actions">
+        <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
         <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
       </div>
     </div>
@@ -134,10 +171,13 @@ function renderCatalog(products) {
       <span class="product-price">${obtenerPrecioBase(p)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
-        <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
+        <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
       </div>
     </div>
   `).join('');
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderDetails(products) {
@@ -153,8 +193,8 @@ function renderDetails(products) {
         <h1>${product.name}</h1>
         <span class="product-detail-price">${obtenerPrecioBase(product)}</span>
         <p class="product-detail-desc">${product.description}</p>
-        ${mostrarSabores(product)}
-        <button onclick="addToCart(${product.id})" class="btn btn-black btn-full">Añadir al carrito</button>
+${mostrarSabores(product)}
+        <button class="btn btn-black btn-full btn-add-cart" id="${product.id}">Añadir al carrito</button>
       </div>
     </div>
     
@@ -175,6 +215,9 @@ function renderDetails(products) {
       </div>
     </div>
   `;
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderCart(products) {
@@ -209,22 +252,27 @@ function renderCart(products) {
           <p>${item.description}</p>
           <p class="cart-item-unit-price">${formatCOP(item.price)} / unidad</p>
         </div>
-        <div class="cart-item-controls">
-          <div class="qty-selector">
-            <button onclick="changeQuantity('${itemKey}', -1)" class="qty-btn">-</button>
+        <div class="qty-selector">
+            <button class="qty-btn" data-key="${itemKey}" data-delta="-1">-</button>
             <span>${item.quantity}</span>
-            <button onclick="changeQuantity('${itemKey}', 1)" class="qty-btn">+</button>
+            <button class="qty-btn" data-key="${itemKey}" data-delta="1">+</button>
           </div>
           <span class="product-category">${item.quantity} unidades</span>
         </div>
         <div class="cart-item-total">
           <span>${formatCOP(itemTotal)}</span>
-          <div><button onclick="removeFromCart('${itemKey}')" class="btn-remove">Eliminar</button></div>
+          <div><button class="btn-remove" data-key="${itemKey}">Eliminar</button></div>
         </div>
       </div>
     `;
   }).join('');
 
+  container.querySelectorAll('.qty-btn').forEach(btn => {
+    btn.addEventListener('click', () => changeQuantity(btn.dataset.key, parseInt(btn.dataset.delta)));
+  });
+  container.querySelectorAll('.btn-remove').forEach(btn => {
+    btn.addEventListener('click', () => removeFromCart(btn.dataset.key));
+  });
   if (subtotalEl) subtotalEl.textContent = cart.length;
   if (totalUnitsEl) totalUnitsEl.textContent = `${totalUnits} unidades`;
   if (totalAmountEl) totalAmountEl.textContent = formatCOP(total);
@@ -256,6 +304,17 @@ function removeFromCart(cartItemId) {
   let cart = getCart();
   cart = cart.filter(i => (i.cartItemId || `${i.id}`) !== cartItemId);
   saveCart(cart);
+  renderCart(window.appProducts);
+}
+function checkout() {
+  const cart = getCart();
+  if (!cart.length || cart.length === 0) {
+    alert('Tu carrito está vacío.');
+    return;
+  }
+
+  alert('¡Pedido realizado con éxito!');
+  saveCart([]);
   renderCart(window.appProducts);
 }
 
