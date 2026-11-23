@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arepas mi Tierrita - Tienda</title>
+  <title>Mozzarepas - Tienda</title>
   <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/app.js" defer></script>
 </head>
 <body>
 
   <header>
+<<<<<<< HEAD
     <a href="index.html" class="brand-title">Arepas mi Tierrita</a>
     <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
       <span class="bar"></span>
@@ -20,72 +22,77 @@
       <li><a href="catalogo.html" class="nav-text">Catálogo</a></li>
       <li><a href="sobre-nosotros.html" class="nav-text">Sobre nosotros</a></li>
       <li><a href="carrito.html" class="btn btn-black" style="padding: 8px 16px; font-size: 0.9rem;">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+=======
+    <a href="index.html" class="brand-title">Mozzarepas</a>
+    <ul class="nav-links">
+      <li><a href="carrito.html" class="btn btn-black">Ver tu carrito (<span id="cart-count">0</span>)</a></li>
+>>>>>>> main
     </ul>
   </header>
 
   <main>
-    <section class="main-section">
-      <div class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero.jpg'); min-height: 350px;">
-        <div class="hero-content">
-          <h1 class="hero-title" style="color: white;">Haz tu pedido ahora</h1>
-          <p class="hero-subtitle" style="color: #ffffff; font-weight: 500;">Fácil y rápido</p>
-          <a href="catalogo.html" class="btn btn-white">Ver catálogo</a>
-        </div>
+<section class="main-section">
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Haz tu pedido ahora</h1>
+        <p class="hero-subtitle">Fácil y rápido</p>
+        <a href="catalogo.html" class="btn btn-white">Ver catálogo</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Combo gringo -->
-    <section class="main-section" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color); display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 30px;">
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
-        <h2 style="color: var(--text-title-color); font-size: 1.8rem;">Combo gringo</h2>
-        <p>Arepa rellena con huevos, tocino y queso mozzarella, acompañada con jugo de naranja.</p>
-        <div style="display: flex; gap: 15px; margin-top: 10px;">
-          <a href="detalles-producto.html?id=4" class="btn btn-white">Ver página del producto</a>
-          <button onclick="addToCart(4)" class="btn btn-black">Añadir al carrito</button>
-        </div>
+  <!-- Combo gringo -->
+  <section class="main-section combo-card">
+    <div class="combo-info">
+      <h2 class="section-title">Combo gringo</h2>
+      <p>Arepa rellena con huevos, tocino y queso mozzarella, acompañada con jugo de naranja.</p>
+      <div class="combo-actions">
+        <a href="detalles-producto.html?id=4" class="btn btn-white">Ver página del producto</a>
+        <button  class="btn btn-black" id="4">Añadir al carrito</button>
       </div>
-      <div style="flex: 1; display: flex; justify-content: flex-end;">
-        <img src="images/combo1.jpg" alt="Combo gringo" style="width: 100%; max-width: 400px; height: 220px;">
-      </div>
-    </section>
+    </div>
+    <div class="combo-img-right">
+      <img src="images/combo1.jpg" alt="Combo gringo">
+    </div>
+  </section>
 
-    <!-- Combo montañero -->
-    <section class="main-section" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px var(--shadow-color); display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 30px;">
-      <div style="flex: 1; display: flex; justify-content: flex-start;">
-        <img src="images/combo2.jpg" alt="Combo montañero" style="width: 100%; max-width: 400px; height: 220px;">
+  <!-- Combo montañero -->
+  <section class="main-section combo-card">
+    <div class="combo-img-left">
+      <img src="images/combo2.jpg" alt="Combo montañero">
+    </div>
+    <div class="combo-info">
+      <h2 class="section-title">Combo montañero</h2>
+      <p>Arepa rellena con frijoles, carne molida y chorizo, acompañada de café.</p>
+      <div class="combo-actions">
+        <a href="detalles-producto.html?id=5" class="btn btn-white">Ver página del producto</a>
+        <button  class="btn btn-black" id="5">Añadir al carrito</button>
       </div>
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
-        <h2 style="color: var(--text-title-color); font-size: 1.8rem;">Combo montañero</h2>
-        <p>Arepa rellena con frijoles, carne molida y chorizo, acompañada de café.</p>
-        <div style="display: flex; gap: 15px; margin-top: 10px;">
-          <a href="detalles-producto.html?id=5" class="btn btn-white">Ver página del producto</a>
-          <button onclick="addToCart(5)" class="btn btn-black">Añadir al carrito</button>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="main-section">
-      <h2 style="color: var(--text-title-color); font-size: 2rem;">Arepas y mucho más</h2>
-      <div class="products-grid">
-        <div class="product-card">
-          <img src="images/arepa2.jpg" alt="La campesina">
-          <h3>La campesina</h3>
-          <p>Rellena de pollo desmechado y queso mozzarella.</p>
-          <span class="product-price">$10.99</span>
-        </div>
-        <div class="product-card">
-          <img src="images/juice.jpg" alt="Jugo de guayaba">
-          <h3>Jugo de guayaba</h3>
-          <p>En envase 250ml, fresco y natural.</p>
-          <span class="product-price">$10.99</span>
-        </div>
+  <section class="main-section">
+    <h2 class="section-title-lg">Arepas y mucho más</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="images/arepa2.jpg" alt="La campesina">
+        <h3>La campesina</h3>
+        <p>Rellena de pollo desmechado y queso mozzarella.</p>
+        <span class="product-price">$10.99</span>
       </div>
-    </section>
+      <div class="product-card">
+        <img src="images/juice.jpg" alt="Jugo de guayaba">
+        <h3>Jugo de guayaba</h3>
+        <p>En envase 250ml, fresco y natural.</p>
+        <span class="product-price">$10.99</span>
+      </div>
+    </div>
+  </section>
   </main>
 
   <footer>
     <div class="footer-proyecto">
-      <p style="font-weight: bold; color: var(--text-title-color);">Proyecto de emprendimiento,<br/> programación web y móvil.</p>
+      <p>Proyecto de emprendimiento,<br/> programación web y móvil.</p>
     </div>
     <div class="footer-integrantes">
       <h4>Integrantes</h4>
@@ -100,6 +107,5 @@
     </div>
   </footer>
 
-  <script src="scripts/app.js"></script>
 </body>
 </html>
