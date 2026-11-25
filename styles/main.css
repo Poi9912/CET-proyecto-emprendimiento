@@ -432,6 +432,24 @@ img {
   color: var(--text-title-color);
 }
 
+/* Estilos para página de opiniones (opinion.html) */
+.opinion-form {
+  background-color: #ffffff;
+  display: flex;
+  gap: 20px;
+  min-width: 500px;
+  padding: 30px;
+  border-radius: 12px;
+  border-style: none;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.opinion-btn {
+  width: 100%;
+}
+
+
+
 /* Vista de Detalle del Producto (app.js) */
 .product-detail-view {
   display: flex;
