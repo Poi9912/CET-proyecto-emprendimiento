@@ -438,11 +438,12 @@ img {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  min-width: 500px;
+  max-width: 100%;
   padding: 30px;
   border-radius: 12px;
   border-style: none;
   box-shadow: 0 4px 10px var(--shadow-color);
+  margin-right: 140px;
 }
 
 .opinion-btn {
@@ -486,7 +487,7 @@ img {
   box-sizing: border-box;
   font-family: inherit;
 }
-.comentario :hover{
+.comentario:hover{
   min-height: 110px;
   resize: vertical;
 }
