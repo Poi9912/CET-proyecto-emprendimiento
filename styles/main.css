@@ -655,6 +655,35 @@ img {
   margin-left: 1.6rem;
 }
 
+.sabor-selector-container {
+  margin: 10px 0;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.sabor-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.sabor-select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 0.85rem;
+  color: #222;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.sabor-select:focus {
+  outline: none;
+  border-color: #000;
+}
 /* Media Queries para Responsividad (Pendiente por hacer)*/
 
 
