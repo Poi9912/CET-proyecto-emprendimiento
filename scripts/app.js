@@ -252,7 +252,8 @@ function renderCart(products) {
           <p>${item.description}</p>
           <p class="cart-item-unit-price">${formatCOP(item.price)} / unidad</p>
         </div>
-        <div class="qty-selector">
+        <div class="cart-item-controls">
+          <div class="qty-selector">
             <button class="qty-btn" data-key="${itemKey}" data-delta="-1">-</button>
             <span>${item.quantity}</span>
             <button class="qty-btn" data-key="${itemKey}" data-delta="1">+</button>
