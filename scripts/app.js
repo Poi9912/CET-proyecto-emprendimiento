@@ -17,7 +17,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (checkoutBtn) {
       checkoutBtn.addEventListener('click', checkout);
     }
+    // Evento para filtro de Categoria en Catalogo
+    if (document.getElementById('catalog-grid')) {
+      setupCategoryFilter(products);
+      renderCatalog(products);
+    }
+    const categorias_bebida = ['Bebidas calientes', 'Jugos', 'Otras Bebidas'];
 
+function setupCategoryFilter(products) {
+  const selectEl = document.getElementById('filter-category');
+  if (!selectEl) return;
+
+  const categoriasUnicas = [...new Set(products.map(p => p.category).filter(Boolean))];
+
+  const optBebidas = document.createElement('option');
+  optBebidas.value = 'group:Bebidas';
+  optBebidas.textContent = 'Bebidas';
+  selectEl.appendChild(optBebidas);
+
+  categoriasUnicas.forEach(cat => {
+    const option = document.createElement('option');
+    option.value = cat;
+    option.textContent = cat;
+    selectEl.appendChild(option);
+  });
+
+  selectEl.addEventListener('change', () => {
+    const seleccion = selectEl.value;
+
+    if (seleccion === 'all') {
+      renderCatalog(products);
+    } else if (seleccion === 'group:Bebidas') {
+      renderCatalog(products.filter(p => categorias_bebida.includes(p.category)));
+    } else {
+      renderCatalog(products.filter(p => p.category === seleccion));
+    }
+  });
+}
     // Eventos para los botones de combos en tienda.html
     document.querySelectorAll('.btn-add-combo').forEach(button => {
       button.addEventListener('click', () => {
