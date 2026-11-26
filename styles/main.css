@@ -518,6 +518,24 @@ img {
   color: var(--text-title-color);
 }
 
+/* Estilos para página de opiniones (opinion.html) */
+.opinion-form {
+  background-color: #ffffff;
+  display: flex;
+  gap: 20px;
+  min-width: 500px;
+  padding: 30px;
+  border-radius: 12px;
+  border-style: none;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.opinion-btn {
+  width: 100%;
+}
+
+
+
 /* Vista de Detalle del Producto (app.js) */
 .product-detail-view {
   display: flex;
@@ -739,6 +757,35 @@ img {
 .footer-integrantes ul {
   padding: 0;
   margin-left: 1.6rem;
+}
+.sabor-selector-container {
+  margin: 10px 0;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.sabor-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.sabor-select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 0.85rem;
+  color: #222;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.sabor-select:focus {
+  outline: none;
+  border-color: #000;
 }
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
