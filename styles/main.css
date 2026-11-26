@@ -487,10 +487,6 @@ img {
   box-sizing: border-box;
   font-family: inherit;
 }
-.comentario:hover{
-  min-height: 110px;
-  resize: vertical;
-}
 
 
 /* Vista de Detalle del Producto (app.js) */
