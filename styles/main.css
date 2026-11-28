@@ -735,7 +735,7 @@ img {
 /* Footer proyecto e integrantes */
 .footer-proyecto {
   max-width: 500px;
-  margin: auto 0 auto auto;
+  
 }
 
 .footer-proyecto p {
@@ -747,7 +747,7 @@ img {
   font-size: 0.85rem;
   line-height: 1.5;
   color: var(--text-body-color);
-  margin: auto auto auto 0;
+  
 }
 
 .footer-integrantes h4 {
@@ -861,30 +861,127 @@ img {
     right: 0px;
   }
 }
-@media (max-width: 768px){
+@media (max-width: 768px) {
+
+  .brand-title {
+    position: relative;
+    z-index: 1;
+    font-size: 1.25rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 1002;
+  }
 
   header,
   main,
-  footer{
-    padding-left:20px;
-    padding-right:20px;
+  footer {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
-  .product-card{
-    width:100%;
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .page-title,
+  .section-title {
+    text-align: center;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--menu-width);
+    max-width: 80vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    padding: 90px 1.25rem 2rem;
+    gap: 20px;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: -8px 0 20px var(--shadow-color);
+    z-index: 1001;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .nav-links li a,
+  .nav-links li a.btn,
+  .nav-links li a.nav-cta {
+    width: auto !important;
+    max-width: 100% !important;
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap;
+  }
+
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .filter-select,
+  .filters-bar select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .catalog-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .product-actions {
+    flex-direction: column;
+  }
+
+  .product-actions .btn {
+    width: 100%;
   }
 
   .section-row,
   .combo-card,
   .product-detail-view,
-  .cart-layout{
-    flex-direction:column;
+  .cart-layout {
+    flex-direction: column;
   }
 
-  footer{
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-
 }
