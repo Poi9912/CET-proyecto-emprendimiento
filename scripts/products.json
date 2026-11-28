@@ -154,7 +154,7 @@
   },
   {
     "id": 18,
-    "name": "Combo Clásico: Mozzarepa  + Café americano",
+    "name": "Combo Clásico: Mozzarepa + Café americano",
     "category": "Combos",
     "description": "El dúo tradicional que nunca falla a cualquier hora del día.",
     "price": 6000,
@@ -172,7 +172,7 @@
   },
   {
     "id": 20,
-    "name": "Combo Gringo: Mozza-Americana + Jugo de naranja natural",
+    "name": "Combo Gringo: Mozza-Gringa + Jugo de naranja natural",
     "category": "Combos",
     "description": "Energía pura con el toque cítrico perfecto para empezar la mañana.",
     "price": 11000,
@@ -192,7 +192,7 @@
     "id": 22,
     "name": "Combo Crocante: Mozza-Crunch + Quatro o Limonada natural",
     "category": "Combos",
-    "description": "El toque cítrico ideal para acompañar el chicharrón crocante..",
+    "description": "El toque cítrico ideal para acompañar el chicharrón crocante.",
     "price": 13000,
     "stock": 12,
     "image": "img/crocante.jpg"
@@ -228,7 +228,7 @@
       { "name": "Naranja (solo natural)", "stock": 10 },
       { "name": "Mora", "stock": 8 },
       { "name": "Lulo", "stock": 8 },
-      { "name": "Maracuya", "stock": 6 },
+      { "name": "Maracuyá", "stock": 6 },
       { "name": "Mango", "stock": 10 },
       { "name": "Guayaba", "stock": 7 },
       { "name": "Guanábana", "stock": 5 },
@@ -245,7 +245,7 @@
     "sabores": [
       { "name": "Mora", "stock": 8 },
       { "name": "Lulo", "stock": 8 },
-      { "name": "Maracuya", "stock": 6 },
+      { "name": "Maracuyá", "stock": 6 },
       { "name": "Mango", "stock": 10 },
       { "name": "Guayaba", "stock": 7 },
       { "name": "Guanábana", "stock": 5 }
@@ -263,7 +263,7 @@
       { "name": "Coca-Cola Sin Azúcar", "price": 4500, "stock": 12 },
       { "name": "Quatro", "price": 4500, "stock": 10 },
       { "name": "Sprite", "price": 4500, "stock": 10 },
-      { "name": "Kola Roman", "price": 4500, "stock": 10 },
+      { "name": "Kola Román", "price": 4500, "stock": 10 },
       { "name": "Jugo del Valle", "price": 4500, "stock": 12 },
       { "name": "Agua brisa sin gas", "price": 2500, "stock": 15 },
       { "name": "Agua brisa con gas", "price": 2500, "stock": 12 }

@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // Evento para el formulario de opiniones en opinion.html
+  const opinionForm = document.getElementById('opinion-form');
+  if (opinionForm) {
+    opinionForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Gracias por compartir tu opinión con Mozzarepas!');
+      opinionForm.reset();
+    });
+  }
+
   try {
     const response = await fetch('scripts/products.json');
     const products = await response.json();
@@ -139,6 +149,7 @@ function renderHomeProducts(products) {
       <img src="${p.image}" alt="${p.name}">
       <h3>${p.name}</h3>
       <p>${p.description}</p>
+      <span class="product-price">${obtenerPrecioBase(p)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
         <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
@@ -218,7 +229,7 @@ ${mostrarSabores(product)}
     <div class="main-section">
       <h2>Productos relacionados</h2>
       <div class="products-grid related-grid">
-        ${products.slice(0, 6).map(p => `
+        ${products.filter(p => p.id !== product.id).slice(0, 6).map(p => `
           <div class="product-card">
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
@@ -243,6 +254,8 @@ function renderCart(products) {
   const totalUnitsEl = document.getElementById('cart-total-units');
   const totalAmountEl = document.getElementById('cart-total-amount');
   const cart = getCart();
+
+  const formatUnidades = (n) => `${n} ${n === 1 ? 'unidad' : 'unidades'}`;
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Tu carrito está vacío.</p>';
@@ -275,7 +288,7 @@ function renderCart(products) {
             <span>${item.quantity}</span>
             <button class="qty-btn" data-key="${itemKey}" data-delta="1">+</button>
           </div>
-          <span class="product-category">${item.quantity} unidades</span>
+          <span class="product-category">${formatUnidades(item.quantity)}</span>
         </div>
         <div class="cart-item-total">
           <span>${formatCOP(itemTotal)}</span>
@@ -292,7 +305,7 @@ function renderCart(products) {
     btn.addEventListener('click', () => removeFromCart(btn.dataset.key));
   });
   if (subtotalEl) subtotalEl.textContent = cart.length;
-  if (totalUnitsEl) totalUnitsEl.textContent = `${totalUnits} unidades`;
+  if (totalUnitsEl) totalUnitsEl.textContent = formatUnidades(totalUnits);
   if (totalAmountEl) totalAmountEl.textContent = formatCOP(total);
 }
 
@@ -307,7 +320,7 @@ function changeQuantity(cartItemId, delta) {
     return;
   }
 
-  const maxStock = item.stock || 99;
+  const maxStock = item.stock ?? 99;
   if (newQty > maxStock) {
     alert(`Solo hay ${maxStock} unidades disponibles.`);
     return;
@@ -377,13 +390,3 @@ function actualizarPrecioOpcion(selectEl) {
     if (priceEl) priceEl.textContent = formatCOP(nuevoPrecio);
   }
 }
-
-// Evento para el formulario de opiniones en opinion.html
-    const opinionForm = document.getElementById('opinion-form');
-    if (opinionForm) {
-      opinionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('¡Gracias por compartir tu opinión con Mozzarepas!');
-        opinionForm.reset();
-      });
-    }
