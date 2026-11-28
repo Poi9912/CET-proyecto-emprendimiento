@@ -61,8 +61,9 @@ function addToCart(productId, quantity = 1) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
-const selectEl = document.getElementById(`sabor-${productId}`);
+  const selectEl = document.getElementById(`sabor-${productId}`);
   let precioFinal = Number(product.price) || 0;
+  let maxStock = product.stock ?? 99;
   let saborElegido = null;
 
   if (selectEl) {
@@ -72,15 +73,20 @@ const selectEl = document.getElementById(`sabor-${productId}`);
       return;
     }
 
-  const opcion = selectEl.options[selectEl.selectedIndex];
-  const precioOpcion = opcion.getAttribute('data-precio');
-  if (precioOpcion) {
-    precioFinal = Number(precioOpcion);
+    const opcion = selectEl.options[selectEl.selectedIndex];
+    const precioOpcion = opcion.getAttribute('data-precio');
+    const stockOpcion = opcion.getAttribute('data-stock');
+
+    if (precioOpcion !== null && precioOpcion !== '') {
+      precioFinal = Number(precioOpcion);
+    }
+    if (stockOpcion !== null && stockOpcion !== '') {
+      maxStock = Number(stockOpcion);
+    }
   }
-  }
+
   const cartItemId = saborElegido ? `${product.id}-${saborElegido}` : `${product.id}`;
   const finalName = saborElegido ? `${product.name} (${saborElegido})` : product.name;
-  const maxStock = product.stock || 99;
 
   let cart = getCart();
   const existingItem = cart.find(item => (item.cartItemId || `${item.id}`) === cartItemId);
@@ -206,7 +212,7 @@ ${mostrarSabores(product)}
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
             <p>${p.description}</p>
-            <span class="product-price">${formatCOP(p.price)}</span>
+            <span class="product-price">${obtenerPrecioBase(p)}</span>
             <div class="product-actions">
               <a href="detalles-producto.html?id=${p.id}" class="btn btn-white btn-full">Ver producto</a>
             </div>
@@ -324,7 +330,17 @@ function mostrarSabores(p) {
   
   const opciones = p.sabores.map((s) => {
     if (typeof s === 'object') {
-      return `<option value="${s.name}" data-precio="${s.price}">${s.name} - ${formatCOP(s.price)}</option>`;
+      const tienePrecio = s.price !== undefined && s.price !== null;
+      const tieneStock = s.stock !== undefined && s.stock !== null;
+      const agotado = tieneStock && Number(s.stock) <= 0;
+
+      const priceAttr = tienePrecio ? `data-precio="${s.price}"` : '';
+      const stockAttr = tieneStock ? `data-stock="${s.stock}"` : '';
+      const disabledAttr = agotado ? 'disabled' : '';
+      const textoPrecio = tienePrecio ? ` - ${formatCOP(s.price)}` : '';
+      const textoAgotado = agotado ? ' (Agotado)' : '';
+
+      return `<option value="${s.name}" ${priceAttr} ${stockAttr} ${disabledAttr}>${s.name}${textoPrecio}${textoAgotado}</option>`;
     }
     return `<option value="${s}">${s}</option>`;
   }).join("");
