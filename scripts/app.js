@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Evento para actualizar el precio cuando cambia cualquier selector de sabores
     document.addEventListener('change', (e) => {
       if (e.target.classList.contains('sabor-select')) {
-        const productId = parseInt(e.target.dataset.productId);
-        actualizarPrecioOpcion(productId, e.target);
+        actualizarPrecioOpcion(e.target);
       }
     });
   } catch (error) {
@@ -360,7 +359,7 @@ function mostrarSabores(p) {
   return `
     <div class="sabor-selector-container">
       <label for="sabor-${p.id}" class="sabor-label">Elige tu opción:</label>
-      <select id="sabor-${p.id}" class="sabor-select" data-product-id="${p.id}">
+      <select id="sabor-${p.id}" class="sabor-select">
         <option value="" disabled selected>-- Selecciona una opción --</option>
         ${opciones}
       </select>
@@ -368,10 +367,10 @@ function mostrarSabores(p) {
   `;
 }
 
-function actualizarPrecioOpcion(productId, selectEl) {
+function actualizarPrecioOpcion(selectEl) {
   const opcion = selectEl.options[selectEl.selectedIndex];
   const nuevoPrecio = opcion.getAttribute('data-precio');
-  
+
   if (nuevoPrecio) {
     const card = selectEl.closest('.product-card, .product-detail-info');
     const priceEl = card ? card.querySelector('.product-price, .product-detail-price') : null;
