@@ -146,7 +146,13 @@ footer {
   cursor: pointer;
   padding: 0;
 }
-
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-title-color);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 .menu-toggle.active .bar:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -264,7 +270,7 @@ footer {
   overflow: hidden;
   padding: 80px 40px;
   text-align: center;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/hero.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/hero.jpg');
   background-size: cover;
   background-position: center;
   box-shadow: 0 6px 12px var(--shadow-color);
@@ -323,6 +329,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   transition: opacity 0.2s ease;
 }
 
@@ -519,21 +526,140 @@ img {
 }
 
 /* Estilos para página de opiniones (opinion.html) */
-.opinion-form {
-  background-color: #ffffff;
+.opinion-section {
+  align-items: stretch;
+  gap: 60px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.opinion-content {
+  flex: 1;
+  max-width: 440px;
   display: flex;
-  gap: 20px;
-  min-width: 500px;
-  padding: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.opinion-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.opinion-title {
+  font-size: 3.2rem;
+  line-height: 1.1;
+}
+
+.opinion-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text-body-color);
+}
+
+.opinion-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-title-color);
+}
+
+.opinion-note {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opinion-note h3 {
+  font-size: 1.15rem;
+}
+
+.opinion-note p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.opinion-form {
+  flex: 1;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 32px;
   border-radius: 12px;
-  border-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.formulario-opinion {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.opinion-form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.titulo-opinion {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.opinion-indicators {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+.required-mark {
+  color: #d32f2f;
+}
+
+.etiqueta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-title-color);
+}
+
+.campo-texto,
+.comentario {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-title-color);
+  transition: border-color 0.2s ease;
+}
+
+.campo-texto:focus,
+.comentario:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+.comentario {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .opinion-btn {
   width: 100%;
+  padding: 14px;
+  border-radius: 8px;
 }
-
 
 
 /* Vista de Detalle del Producto (app.js) */
@@ -758,6 +884,19 @@ img {
   padding: 0;
   margin-left: 1.6rem;
 }
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .brand-title {
+    position: relative;
+    z-index: 1;
+    font-size: 1.25rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 1002;
+  }
 .sabor-selector-container {
   margin: 10px 0;
   font-size: 0.85rem;
@@ -808,7 +947,24 @@ img {
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+  .products-grid,
+  .values-list,
+  .moments-list,
+  .filters-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .products-grid > *,
+  .moments-list > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
