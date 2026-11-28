@@ -154,7 +154,7 @@
   },
   {
     "id": 18,
-    "name": "Combo Clásico: Mozzarepa  + Café americano",
+    "name": "Combo Clásico: Mozzarepa + Café americano",
     "category": "Combos",
     "description": "El dúo tradicional que nunca falla a cualquier hora del día.",
     "price": 6000,
@@ -172,7 +172,7 @@
   },
   {
     "id": 20,
-    "name": "Combo Gringo: Mozza-Americana + Jugo de naranja natural",
+    "name": "Combo Gringo: Mozza-Gringa + Jugo de naranja natural",
     "category": "Combos",
     "description": "Energía pura con el toque cítrico perfecto para empezar la mañana.",
     "price": 11000,
@@ -192,7 +192,7 @@
     "id": 22,
     "name": "Combo Crocante: Mozza-Crunch + Quatro o Limonada natural",
     "category": "Combos",
-    "description": "El toque cítrico ideal para acompañar el chicharrón crocante..",
+    "description": "El toque cítrico ideal para acompañar el chicharrón crocante.",
     "price": 13000,
     "stock": 12,
     "image": "img/crocante.jpg"
@@ -206,53 +206,67 @@
     "stock": 12,
     "image": "img/montañero.jpg"
   },
-    {
-    "id": 23,
+{
+    "id": 24,
     "name": "Bebidas Calientes",
     "category": "Bebidas calientes",
     "sabores": [
-      { "name": "Café americano (Tinto)", "price": 2500 },
-      { "name": "Café con leche", "price": 3500 },
-      { "name": "Chocolate caliente", "price": 3500 },
-      { "name": "Capuchino", "price": 4500 },
-      { "name": "Milo caliente", "price": 4500 }
+      { "name": "Café americano (Tinto)", "price": 2500, "stock": 15 },
+      { "name": "Café con leche", "price": 3500, "stock": 12 },
+      { "name": "Chocolate caliente", "price": 3500, "stock": 12 },
+      { "name": "Capuchino", "price": 4500, "stock": 10 },
+      { "name": "Milo caliente", "price": 4500, "stock": 10 }
     ],
     "description": "Bebidas recién preparadas y calientitas para acompañar tu arepa a cualquier hora.",
     "image": "img/cafeteria.jpg"
   },
-
-  {
-    "id": 29,
+{
+    "id": 25,
     "name": "Jugos naturales en agua",
     "category": "Jugos",
-    "sabores": ["Naranja (solo natural)", "Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana", "Limonada natural (solo natural)"],
+    "sabores": [
+      { "name": "Naranja (solo natural)", "stock": 10 },
+      { "name": "Mora", "stock": 8 },
+      { "name": "Lulo", "stock": 8 },
+      { "name": "Maracuyá", "stock": 6 },
+      { "name": "Mango", "stock": 10 },
+      { "name": "Guayaba", "stock": 7 },
+      { "name": "Guanábana", "stock": 5 },
+      { "name": "Limonada natural (solo natural)", "stock": 12 }
+    ],
     "description": "Jugos naturales en agua",
     "price": 4500,
     "image": "img/en-agua.jpg"
   },
-
   {
-    "id": 30,
+    "id": 26,
     "name": "Jugos naturales en leche",
     "category": "Jugos",
-    "sabores": ["Mora", "Lulo", "Maracuya", "Mango", "Guayaba", "Guanábana"],
+    "sabores": [
+      { "name": "Mora", "stock": 8 },
+      { "name": "Lulo", "stock": 8 },
+      { "name": "Maracuyá", "stock": 6 },
+      { "name": "Mango", "stock": 10 },
+      { "name": "Guayaba", "stock": 7 },
+      { "name": "Guanábana", "stock": 5 }
+    ],
     "description": "Jugos naturales con leche",
     "price": 5500,
     "image": "img/en-leche.jpg"
   },
   {
-    "id": 31,
+    "id": 27,
     "name": "Gaseosas y Refrescos",
     "category": "Otras Bebidas",
     "sabores": [
-      {"name": "Coca-Cola Original", "price": 4500},
-      {"name": "Coca-Cola Sin Azúcar", "price": 4500},
-      {"name": "Quatro", "price": 4500},
-      {"name": "Sprite", "price": 4500},
-      {"name": "Kola Roman", "price": 4500},
-      {"name": "Jugo del Valle", "price": 4500},
-      {"name": "Agua brisa sin gas", "price": 2500},
-      {"name": "Agua brisa con gas", "price": 2500}
+      { "name": "Coca-Cola Original", "price": 4500, "stock": 15 },
+      { "name": "Coca-Cola Sin Azúcar", "price": 4500, "stock": 12 },
+      { "name": "Quatro", "price": 4500, "stock": 10 },
+      { "name": "Sprite", "price": 4500, "stock": 10 },
+      { "name": "Kola Román", "price": 4500, "stock": 10 },
+      { "name": "Jugo del Valle", "price": 4500, "stock": 12 },
+      { "name": "Agua brisa sin gas", "price": 2500, "stock": 15 },
+      { "name": "Agua brisa con gas", "price": 2500, "stock": 12 }
     ],
     "description": "El acompañamiento frío ideal para refrescarte en cualquier momento.",
     "image": "img/coca-cola.jpg"

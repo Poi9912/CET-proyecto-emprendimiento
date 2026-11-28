@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // Evento para el formulario de opiniones en opinion.html
+  const opinionForm = document.getElementById('opinion-form');
+  if (opinionForm) {
+    opinionForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Gracias por compartir tu opinión con Mozzarepas!');
+      opinionForm.reset();
+    });
+  }
+
   try {
     const response = await fetch('scripts/products.json');
     const products = await response.json();
@@ -61,6 +71,13 @@ function setupCategoryFilter(products) {
         addToCart(id);
       });
     });
+
+    // Evento para actualizar el precio cuando cambia cualquier selector de sabores
+    document.addEventListener('change', (e) => {
+      if (e.target.classList.contains('sabor-select')) {
+        actualizarPrecioOpcion(e.target);
+      }
+    });
   } catch (error) {
     console.error('Error loading products:', error);
   }
@@ -97,8 +114,9 @@ function addToCart(productId, quantity = 1) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
-const selectEl = document.getElementById(`sabor-${productId}`);
+  const selectEl = document.getElementById(`sabor-${productId}`);
   let precioFinal = Number(product.price) || 0;
+  let maxStock = product.stock ?? 99;
   let saborElegido = null;
 
   if (selectEl) {
@@ -108,15 +126,20 @@ const selectEl = document.getElementById(`sabor-${productId}`);
       return;
     }
 
-  const opcion = selectEl.options[selectEl.selectedIndex];
-  const precioOpcion = opcion.getAttribute('data-precio');
-  if (precioOpcion) {
-    precioFinal = Number(precioOpcion);
+    const opcion = selectEl.options[selectEl.selectedIndex];
+    const precioOpcion = opcion.getAttribute('data-precio');
+    const stockOpcion = opcion.getAttribute('data-stock');
+
+    if (precioOpcion !== null && precioOpcion !== '') {
+      precioFinal = Number(precioOpcion);
+    }
+    if (stockOpcion !== null && stockOpcion !== '') {
+      maxStock = Number(stockOpcion);
+    }
   }
-  }
+
   const cartItemId = saborElegido ? `${product.id}-${saborElegido}` : `${product.id}`;
   const finalName = saborElegido ? `${product.name} (${saborElegido})` : product.name;
-  const maxStock = product.stock || 99;
 
   let cart = getCart();
   const existingItem = cart.find(item => (item.cartItemId || `${item.id}`) === cartItemId);
@@ -162,6 +185,7 @@ function renderHomeProducts(products) {
       <img src="${p.image}" alt="${p.name}">
       <h3>${p.name}</h3>
       <p>${p.description}</p>
+      <span class="product-price">${obtenerPrecioBase(p)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
         <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
@@ -175,7 +199,7 @@ function renderHomeProducts(products) {
 
 function renderTiendaProducts(products) {
   const container = document.getElementById('tienda-products');
-  const seleccionados = products.filter(p => [10, 28, 31].includes(p.id));
+  const seleccionados = products.filter(p => [10, 19, 25].includes(p.id));
   container.innerHTML = seleccionados.map(p => `
     <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
@@ -186,10 +210,14 @@ function renderTiendaProducts(products) {
       <span class="product-price">${obtenerPrecioBase(p)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
-        <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
+        <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
       </div>
     </div>
   `).join('');
+
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderCatalog(products) {
@@ -237,12 +265,12 @@ ${mostrarSabores(product)}
     <div class="main-section">
       <h2>Productos relacionados</h2>
       <div class="products-grid related-grid">
-        ${products.slice(0, 6).map(p => `
+        ${products.filter(p => p.id !== product.id).slice(0, 6).map(p => `
           <div class="product-card">
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
             <p>${p.description}</p>
-            <span class="product-price">${formatCOP(p.price)}</span>
+            <span class="product-price">${obtenerPrecioBase(p)}</span>
             <div class="product-actions">
               <a href="detalles-producto.html?id=${p.id}" class="btn btn-white btn-full">Ver producto</a>
             </div>
@@ -262,6 +290,8 @@ function renderCart(products) {
   const totalUnitsEl = document.getElementById('cart-total-units');
   const totalAmountEl = document.getElementById('cart-total-amount');
   const cart = getCart();
+
+  const formatUnidades = (n) => `${n} ${n === 1 ? 'unidad' : 'unidades'}`;
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Tu carrito está vacío.</p>';
@@ -294,7 +324,7 @@ function renderCart(products) {
             <span>${item.quantity}</span>
             <button class="qty-btn" data-key="${itemKey}" data-delta="1">+</button>
           </div>
-          <span class="product-category">${item.quantity} unidades</span>
+          <span class="product-category">${formatUnidades(item.quantity)}</span>
         </div>
         <div class="cart-item-total">
           <span>${formatCOP(itemTotal)}</span>
@@ -311,7 +341,7 @@ function renderCart(products) {
     btn.addEventListener('click', () => removeFromCart(btn.dataset.key));
   });
   if (subtotalEl) subtotalEl.textContent = cart.length;
-  if (totalUnitsEl) totalUnitsEl.textContent = `${totalUnits} unidades`;
+  if (totalUnitsEl) totalUnitsEl.textContent = formatUnidades(totalUnits);
   if (totalAmountEl) totalAmountEl.textContent = formatCOP(total);
 }
 
@@ -326,7 +356,7 @@ function changeQuantity(cartItemId, delta) {
     return;
   }
 
-  const maxStock = item.stock || 99;
+  const maxStock = item.stock ?? 99;
   if (newQty > maxStock) {
     alert(`Solo hay ${maxStock} unidades disponibles.`);
     return;
@@ -360,7 +390,17 @@ function mostrarSabores(p) {
   
   const opciones = p.sabores.map((s) => {
     if (typeof s === 'object') {
-      return `<option value="${s.name}" data-precio="${s.price}">${s.name} - ${formatCOP(s.price)}</option>`;
+      const tienePrecio = s.price !== undefined && s.price !== null;
+      const tieneStock = s.stock !== undefined && s.stock !== null;
+      const agotado = tieneStock && Number(s.stock) <= 0;
+
+      const priceAttr = tienePrecio ? `data-precio="${s.price}"` : '';
+      const stockAttr = tieneStock ? `data-stock="${s.stock}"` : '';
+      const disabledAttr = agotado ? 'disabled' : '';
+      const textoPrecio = tienePrecio ? ` - ${formatCOP(s.price)}` : '';
+      const textoAgotado = agotado ? ' (Agotado)' : '';
+
+      return `<option value="${s.name}" ${priceAttr} ${stockAttr} ${disabledAttr}>${s.name}${textoPrecio}${textoAgotado}</option>`;
     }
     return `<option value="${s}">${s}</option>`;
   }).join("");
@@ -368,7 +408,7 @@ function mostrarSabores(p) {
   return `
     <div class="sabor-selector-container">
       <label for="sabor-${p.id}" class="sabor-label">Elige tu opción:</label>
-      <select id="sabor-${p.id}" class="sabor-select" onchange="actualizarPrecioOpcion(${p.id}, this)">
+      <select id="sabor-${p.id}" class="sabor-select">
         <option value="" disabled selected>-- Selecciona una opción --</option>
         ${opciones}
       </select>
@@ -376,23 +416,13 @@ function mostrarSabores(p) {
   `;
 }
 
-function actualizarPrecioOpcion(productId, selectEl) {
+function actualizarPrecioOpcion(selectEl) {
   const opcion = selectEl.options[selectEl.selectedIndex];
   const nuevoPrecio = opcion.getAttribute('data-precio');
-  
+
   if (nuevoPrecio) {
     const card = selectEl.closest('.product-card, .product-detail-info');
     const priceEl = card ? card.querySelector('.product-price, .product-detail-price') : null;
     if (priceEl) priceEl.textContent = formatCOP(nuevoPrecio);
   }
 }
-
-// Evento para el formulario de opiniones en opinion.html
-    const opinionForm = document.getElementById('opinion-form');
-    if (opinionForm) {
-      opinionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('¡Gracias por compartir tu opinión con Mozzarepas!');
-        opinionForm.reset();
-      });
-    }
