@@ -14,6 +14,7 @@
   --menu-width: 80vw;
   --menu-padding-x: 1.25rem;
   --menu-inner-width: calc(var(--menu-width) - (var(--menu-padding-x) * 2));
+  --color-outlines: #99740c;
 }
 * {
   box-sizing: border-box;
@@ -270,7 +271,7 @@ footer {
   overflow: hidden;
   padding: 80px 40px;
   text-align: center;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/hero.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/hero.png');
   background-size: cover;
   background-position: center;
   box-shadow: 0 6px 12px var(--shadow-color);
@@ -301,6 +302,11 @@ footer {
   font-size: 3rem;
   font-weight: bold;
   max-width: 600px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  -webkit-text-stroke: 7px var(--color-outlines);
+  paint-order: stroke fill;
 }
 
 .hero-subtitle {
@@ -308,6 +314,11 @@ footer {
   font-size: 1.2rem;
   max-width: 500px;
   font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  -webkit-text-stroke: 5px var(--color-outlines);
+  paint-order: stroke fill;
 }
 
 /* Imágenes con sombra inferior */
@@ -884,48 +895,7 @@ img {
   padding: 0;
   margin-left: 1.6rem;
 }
-/* Media Queries para Responsividad */
-@media (max-width: 768px) {
-  .brand-title {
-    position: relative;
-    z-index: 1;
-    font-size: 1.25rem;
-  }
 
-  .menu-toggle {
-    display: flex;
-    position: relative;
-    z-index: 1002;
-  }
-.sabor-selector-container {
-  margin: 10px 0;
-  font-size: 0.85rem;
-  text-align: left;
-}
-
-.sabor-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: #333;
-}
-
-.sabor-select {
-  width: 100%;
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font-size: 0.85rem;
-  color: #222;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.sabor-select:focus {
-  outline: none;
-  border-color: #000;
-}
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
   .brand-title {
