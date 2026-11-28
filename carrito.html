@@ -6,15 +6,19 @@
   <title>Mozzarepas - Tu Carrito</title>
   <link rel="stylesheet" href="styles/main.css">
   <script src="scripts/app.js" defer></script>
+  <script src="scripts/menu.js" defer></script>
 </head>
 <body>
 
   <header>
     <a href="index.html" class="brand-title">Mozzarepas</a>
-    <span class="header-tagline">¿Estamos bien de cuentas o tienes más antojos?</span>
-    <ul class="nav-links">
-      <li><a href="catalogo.html" class="btn btn-white">Volver al catálogo</a></li>
-    </ul>
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="catalogo.html" class="btn btn-white">Ver catálogo</a></li>
   </header>
 
   <main>
