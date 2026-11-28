@@ -350,3 +350,13 @@ function actualizarPrecioOpcion(productId, selectEl) {
     if (priceEl) priceEl.textContent = formatCOP(nuevoPrecio);
   }
 }
+
+// Evento para el formulario de opiniones en opinion.html
+    const opinionForm = document.getElementById('opinion-form');
+    if (opinionForm) {
+      opinionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('¡Gracias por compartir tu opinión con Mozzarepas!');
+        opinionForm.reset();
+      });
+    }

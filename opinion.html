@@ -9,36 +9,59 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="brand-title">Mozzarepas</a>
-    <ul class="nav-links">
-      <li><a href="#" class="nav-text">Sobre nosotros</a></li>
-      <li><a href="tienda.html" class="btn btn-black">¿Te dió hambre?</a></li>
-    </ul>
-  </header>
+<header>
+  <a href="index.html" class="brand-title">Mozzarepas</a>
+  <ul class="nav-links">
+    <li><a href="sobre-nosotros.html" class="nav-text">Sobre nosotros</a></li>
+    <li><a href="opinion.html" class="nav-text">Dejanos tu opinión</a></li>
+    <li><a href="tienda.html" class="btn btn-black">¿Te dió hambre?</a></li>
+  </ul>
+</header>
 
-  <main>
-    <section class="main-section section-row">
-      <div class="opinion-content">
-        <h1 class="page-title">Tu opinión nos importa</h1>
-        <p class="section-title">¿Ya probaste nuestras arepas? Cuéntanos tu experiencia.</p>
-        <p class="opinion-text"> Nos encanta saber qué disfrutaste y qué podemos mejorar. Déjanos tus comentarios en el formulario.</p>
+<main>
+  <section class="main-section section-row opinion-section">
+    <div class="opinion-content">
+      <div class="opinion-intro">
+        <h1 class="page-title opinion-title">Tu opinión nos importa</h1>
+        <p class="opinion-subtitle">¿Ya probaste nuestras arepas? Cuéntanos tu experiencia.</p>
+        <p class="opinion-text">Nos encanta saber qué disfrutaste y qué podemos mejorar. Déjanos tus comentarios en este sencillo formulario.</p>
       </div>
-      <div class="opinion-form">
-        <form class="formulario-opinion" action="" method="post">
+
+      <div class="opinion-note">
+        <h3>Cada experiencia cuenta.</h3>
+        <p>Gracias por ayudarnos a llevar el auténtico sabor de nuestras arepas a más hogares.</p>
+      </div>
+    </div>
+
+    <div class="opinion-form">
+      <form class="formulario-opinion" id="opinion-form">
+        <div class="opinion-form-header">
           <h3 class="titulo-opinion">Cuéntanos cómo te fue</h3>
           <p class="opinion-indicators"><span class="required-mark">*</span> Campos obligatorios</p>
-          <legend class="etiqueta">Nombre <span class="required-mark">*</span></legend>
-          <input class="campo-texto" type="text" name="opinion-nombre" id="opinion-nombre" placeholder="Escribe tu nombre">
-          <legend class="etiqueta">Email de contacto</legend>
-          <input class="campo-texto" type="email" name="opinion-email" id="opinion-email" placeholder="tu-email@email.com">
-          <legend class="etiqueta">Tus comentarios <span class="required-mark">*</span></legend>
-          <textarea class="comentario" name="opinion-comentario" id="opinion-comentario" placeholder="¿Qué te gustó de nuestras arepas?&#10;¿Qué podemos mejorar?"></textarea>
-          <button class="btn btn-black opinion-btn">Enviar mi opinión</button>
-          <p class="opinion-indicators">Tu correo no se publicará. Se usará para responder a tus comentarios.</p>
-        </form>
-      </div>
-    </section>
+        </div>
+
+        <div class="form-group">
+          <label for="opinion-nombre" class="etiqueta">Nombre completo <span class="required-mark">*</span></label>
+          <input class="campo-texto" type="text" name="opinion-nombre" id="opinion-nombre" placeholder="Escribe tu nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="opinion-email" class="etiqueta">Correo electrónico (opcional)</label>
+          <input class="campo-texto" type="email" name="opinion-email" id="opinion-email" placeholder="nombre@ejemplo.com">
+        </div>
+
+        <div class="form-group">
+          <label for="opinion-comentario" class="etiqueta">Tu experiencia <span class="required-mark">*</span></label>
+          <textarea class="comentario" name="opinion-comentario" id="opinion-comentario" placeholder="¿Qué te gustó de nuestras arepas? 
+¿Qué podríamos mejorar?" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-black opinion-btn">Enviar mi opinión</button>
+        <p class="opinion-indicators">Tu correo no se publicará. Lo usaremos solo para responder a tus comentarios.</p>
+      </form>
+    </div>
+  </section>
+</main>
 
     
 
