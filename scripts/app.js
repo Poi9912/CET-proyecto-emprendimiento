@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         addToCart(id);
       });
     });
+
+    // Evento para actualizar el precio cuando cambia cualquier selector de sabores
+    document.addEventListener('change', (e) => {
+      if (e.target.classList.contains('sabor-select')) {
+        const productId = parseInt(e.target.dataset.productId);
+        actualizarPrecioOpcion(productId, e.target);
+      }
+    });
   } catch (error) {
     console.error('Error loading products:', error);
   }
@@ -145,7 +153,7 @@ function renderHomeProducts(products) {
 
 function renderTiendaProducts(products) {
   const container = document.getElementById('tienda-products');
-  const seleccionados = products.filter(p => [10, 28, 31].includes(p.id));
+  const seleccionados = products.filter(p => [10, 19, 25].includes(p.id));
   container.innerHTML = seleccionados.map(p => `
     <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
@@ -156,10 +164,14 @@ function renderTiendaProducts(products) {
       <span class="product-price">${obtenerPrecioBase(p)}</span>
       <div class="product-actions">
         <a href="detalles-producto.html?id=${p.id}" class="btn btn-white">Ver producto</a>
-        <button onclick="addToCart(${p.id})" class="btn btn-black">Añadir al carrito</button>
+        <button class="btn btn-black btn-add-cart" id="${p.id}">Añadir al carrito</button>
       </div>
     </div>
   `).join('');
+
+  container.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.id)));
+  });
 }
 
 function renderCatalog(products) {
@@ -348,7 +360,7 @@ function mostrarSabores(p) {
   return `
     <div class="sabor-selector-container">
       <label for="sabor-${p.id}" class="sabor-label">Elige tu opción:</label>
-      <select id="sabor-${p.id}" class="sabor-select" onchange="actualizarPrecioOpcion(${p.id}, this)">
+      <select id="sabor-${p.id}" class="sabor-select" data-product-id="${p.id}">
         <option value="" disabled selected>-- Selecciona una opción --</option>
         ${opciones}
       </select>
